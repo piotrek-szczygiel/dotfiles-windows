@@ -2,5 +2,5 @@
 
 ```
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser
-iwr -useb https://raw.github.com/piotrek-szczygiel/dotfiles-windows/master/boostrap.ps1 | iex
+iwr -useb https://raw.github.com/piotrek-szczygiel/dotfiles-windows/master/bootstrap.ps1 | iex
 ```
