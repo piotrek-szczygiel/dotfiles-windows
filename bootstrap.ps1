@@ -17,6 +17,7 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://get.
 scoop install git
 scoop bucket add extras
 scoop bucket add java
+scoop bucket add jetbrains
 
 $UserTools = @(
     "7zip",
