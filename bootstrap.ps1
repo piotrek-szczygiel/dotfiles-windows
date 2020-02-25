@@ -13,33 +13,40 @@ Get-ChildItem "$Destination\dotfiles-windows-master\home" | Copy-Item -Destinati
 
 # Install Scoop
 Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://get.scoop.sh")
+
+scoop install git
 scoop bucket add extras
 scoop bucket add java
 
-# Install all the tools
-$ScoopTools = @(
-    "7zip",
+$UserTools = @(
     "autohotkey",
     "cmake",
     "everything",
     "fd",
-    "git",
     "googlechrome",
     "jetbrains-toolbox",
     "megasync",
-    "notepadplusplus",
+    "mpv",
     "openjdk",
-    "potplayer",
     "putty",
     "python",
     "qbittorrent",
     "qnapi",
     "ripgrep",
     "rufus",
-    "sudo",
+    "sudo"
+)
+
+$SudoTools = @(
+    "7zip",
+    "notepadplusplus",
     "vscode"
 )
 
-foreach ($Tool in $ScoopTools) {
+foreach ($Tool in $UserTools) {
     scoop install $Tool
+}
+
+foreach ($Tool in $SudoTools) {
+    sudo scoop install $Tool
 }
