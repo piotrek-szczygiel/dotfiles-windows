@@ -23,6 +23,7 @@ $UserTools = @(
     "autohotkey",
     "clink",
     "cmake",
+    "coreutils",
     "everything",
     "fd",
     "freecommander",
