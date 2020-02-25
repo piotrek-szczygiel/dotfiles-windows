@@ -19,6 +19,7 @@ scoop bucket add extras
 scoop bucket add java
 
 $UserTools = @(
+    "7zip",
     "autohotkey",
     "cmake",
     "everything",
@@ -27,6 +28,7 @@ $UserTools = @(
     "jetbrains-toolbox",
     "megasync",
     "mpv",
+    "notepadplusplus",
     "openjdk",
     "putty",
     "python",
@@ -34,19 +36,10 @@ $UserTools = @(
     "qnapi",
     "ripgrep",
     "rufus",
-    "sudo"
-)
-
-$SudoTools = @(
-    "7zip",
-    "notepadplusplus",
+    "sudo",
     "vscode"
 )
 
 foreach ($Tool in $UserTools) {
     scoop install $Tool
-}
-
-foreach ($Tool in $SudoTools) {
-    sudo scoop install $Tool
 }
