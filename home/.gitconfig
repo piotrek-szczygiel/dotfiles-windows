@@ -5,6 +5,7 @@
     whitespace = warn
 [core]
 	autocrlf = input
+    editor = nvim
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
     whitespace = space-before-tab,tab-in-indent,trailing-space,tabwidth=4

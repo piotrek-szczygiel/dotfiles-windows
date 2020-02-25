@@ -29,6 +29,7 @@ $UserTools = @(
     "jetbrains-toolbox",
     "megasync",
     "mpv",
+    "neovim",
     "openjdk",
     "putty",
     "python",
@@ -37,7 +38,8 @@ $UserTools = @(
     "ripgrep",
     "rufus",
     "sudo",
-    "vscode"
+    "vscode",
+    "wget"
 )
 
 foreach ($Tool in $UserTools) {
