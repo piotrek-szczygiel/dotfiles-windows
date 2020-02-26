@@ -17,6 +17,7 @@ DOSKEY dl=cd %USERPROFILE%\Downloads
 DOSKEY dev=cd C:\dev
 
 DOSKEY e=explorer $*
+DOSKEY npp=%USERPROFILE%\scoop\apps\notepadplusplus\current\notepad++.exe $*
 
 DOSKEY ga=git add $*
 DOSKEY gc=git commit $*
