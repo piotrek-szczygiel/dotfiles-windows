@@ -33,6 +33,7 @@ $UserTools = @(
     "jetbrains-toolbox",
     "llvm",
     "megasync",
+    "netcat",
     "putty",
     "python",
     "ripgrep",
