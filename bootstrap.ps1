@@ -31,6 +31,7 @@ $UserTools = @(
     "googlechrome",
     "jetbrains-toolbox",
     "megasync",
+    "neovim",
     "netcat",
     "notepadplusplus",
     "nu",
@@ -38,7 +39,6 @@ $UserTools = @(
     "python",
     "ripgrep",
     "sudo",
-    "vim",
     "vscode",
     "wget"
 )
