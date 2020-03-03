@@ -34,7 +34,6 @@ $UserTools = @(
     "neovim",
     "netcat",
     "notepadplusplus",
-    "nu",
     "putty",
     "python",
     "ripgrep",
