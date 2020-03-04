@@ -12,11 +12,16 @@
 	pushInsteadOf = "git://github.com/"
 [push]
 	default = simple
-[merge]
-	tool = vscode
-[mergetool "vscode"]
-	cmd = code --wait $MERGED
 [diff]
-	tool = vscode
-[difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+	tool = p4merge
+[difftool]
+	prompt = false
+[difftool "p4merge"]
+	path = p4merge
+[merge]
+	tool = p4merge
+[mergetool]
+	prompt = false
+	keepBackup = false
+[mergetool "p4merge"]
+	path = p4merge
