@@ -2,13 +2,21 @@
 	email = szczygiel.p@gmail.com
 	name = Piotr Szczygieł
 [apply]
-    whitespace = warn
+	whitespace = warn
 [core]
-    autocrlf = input
-    editor = vim
+	autocrlf = input
+	editor = vim
 [url "git@github.com:"]
-    insteadOf = "gh:"
-    pushInsteadOf = "github:"
-    pushInsteadOf = "git://github.com/"
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
 [push]
-    default = simple
+	default = simple
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
