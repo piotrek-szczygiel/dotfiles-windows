@@ -34,6 +34,7 @@ $UserTools = @(
     "neovim",
     "netcat",
     "notepadplusplus",
+    "p4merge",
     "putty",
     "python",
     "ripgrep",
@@ -45,3 +46,7 @@ $UserTools = @(
 foreach ($Tool in $UserTools) {
     scoop install $Tool
 }
+
+scoop install vcredist2012
+scoop uninstall vcredist2012
+
