@@ -45,6 +45,5 @@ foreach ($Tool in $UserTools) {
     scoop install $Tool
 }
 
-scoop install vcredist2012
-scoop uninstall vcredist2012
-
+scoop install vcredist2012 vcredist2013
+scoop uninstall vcredist2012 vcredist2013
