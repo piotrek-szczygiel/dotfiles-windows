@@ -40,6 +40,7 @@ $UserTools = @(
     "ripgrep",
     "rustup",
     "sudo",
+    "uncap",
     "vscode",
     "wget"
 )
