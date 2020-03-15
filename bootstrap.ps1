@@ -41,6 +41,7 @@ $UserTools = @(
     "rustup",
     "sudo",
     "uncap",
+    "unlocker",
     "vscode",
     "wget"
 )
