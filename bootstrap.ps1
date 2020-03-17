@@ -23,6 +23,7 @@ $UserTools = @(
     "7zip",
     "archwsl",
     "autohotkey",
+    "bat",
     "coreutils",
     "everything",
     "fd",
