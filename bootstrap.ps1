@@ -12,12 +12,12 @@ Expand-Archive -Force -Path $ZipFile -DestinationPath $Destination
 Get-ChildItem "$Destination\dotfiles-windows-master\home" | Copy-Item -Destination "$HOME" -Recurse -Force
 
 # Install Scoop
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://get.scoop.sh")
+if (-Not (Get-Command scoop)) {
+    Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://get.scoop.sh")
+}
 
 scoop install git
 scoop bucket add extras
-scoop bucket add java
-scoop bucket add jetbrains
 
 $UserTools = @(
     "7zip",
@@ -29,11 +29,8 @@ $UserTools = @(
     "firefox",
     "freecommander",
     "gcc",
-    "intellij-idea-ultimate",
-    "megasync",
     "neovim",
     "netcat",
-    "openjdk14",
     "p4merge",
     "putty",
     "python",
