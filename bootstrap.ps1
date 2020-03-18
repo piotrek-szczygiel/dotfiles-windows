@@ -41,7 +41,8 @@ $UserTools = @(
     "uncap",
     "unlocker",
     "vscode",
-    "wget"
+    "wget",
+    "wox"
 )
 
 foreach ($Tool in $UserTools) {
