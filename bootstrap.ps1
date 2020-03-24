@@ -1,3 +1,7 @@
+$CloneUrl = "https://github.com/piotrek-szczygiel/dotfiles-windows"
+$PushUrl = "git@github.com:piotrek-szczygiel/dotfiles-windows"
+$Destination = "$env:USERPROFILE\dotfiles"
+
 # Install scoop
 if (-Not (Get-Command scoop)) {
     Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://get.scoop.sh")
@@ -39,7 +43,13 @@ foreach ($Tool in $UserTools) {
 }
 
 # Clone the dotfiles repository
-git clone https://github.com/piotrek-szczygiel/dotfiles-windows $env:userprofile\dotfiles
-Set-Location -Path $env:userprofile\dotfiles
-git remote set-url origin git@github.com:piotrek-szczygiel/dotfiles-windows
-[Environment]::SetEnvironmentVariable("DOTFILES", "$env:userprofile\dotfiles", "User")
+git clone "$CloneUrl" "$Destination"
+
+# Set remote for pushing
+Set-Location -Path "$Destination"
+git remote set-url origin "$PushUrl"
+
+# Point %DOTFILES% to correct directory
+[Environment]::SetEnvironmentVariable("DOTFILES", "$Destination", "User")
+
+Write-Host "Issue 'sudo %DOTFILES%\link-all.bat' from cmd.exe to link configuration files"
