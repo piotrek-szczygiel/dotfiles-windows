@@ -43,6 +43,7 @@ foreach ($Tool in $UserTools) {
 
 # Clone the dotfiles repository
 Remove-Item "$Destination" -Force -Recurse -ErrorAction SilentlyContinue
+Remove-Item "$env:USERPROFILE\.gitconfig" -ErrorAction SilentlyContinue
 git clone "$CloneUrl" "$Destination"
 
 # Set remote for pushing
@@ -52,11 +53,5 @@ git remote set-url origin "$PushUrl"
 # Point %DOTFILES% to correct directory
 [Environment]::SetEnvironmentVariable("DOTFILES", "$Destination", "User")
 
-Write-Host @"
-
-
-Enter following command in new cmd.exe window to link all your configuration:
-    sudo cmd /c "%DOTFILES%\link-all.bat"
-"@
-
+# And launch linking script
 sudo cmd /c "%DOTFILES%\link-all.bat"
