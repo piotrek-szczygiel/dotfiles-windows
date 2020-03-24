@@ -1,0 +1,26 @@
+{
+	"auto_find_in_selection": true,
+	"block_caret": true,
+	"caret_extra_bottom": 0,
+	"caret_extra_top": 0,
+	"caret_style": "blink",
+	"close_windows_when_empty": true,
+	"color_scheme": "Packages/gruvbox/gruvbox (Dark) (Medium).sublime-color-scheme",
+	"drag_text": false,
+	"gruvbox_statusbar_xxs": true,
+	"gruvbox_tabs_xxs": true,
+	"highlight_line": true,
+	"hot_exit": false,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_active"
+	],
+	"shift_tab_unindent": true,
+	"show_encoding": true,
+	"show_line_endings": true,
+	"theme": "gruvbox.sublime-theme"
+}
