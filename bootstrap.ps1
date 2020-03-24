@@ -57,4 +57,6 @@ Write-Host @"
 
 Enter following command in new cmd.exe window to link all your configuration:
     sudo cmd /c "%DOTFILES%\link-all.bat"
-@"
+"@
+
+sudo cmd /c "%DOTFILES%\link-all.bat"
