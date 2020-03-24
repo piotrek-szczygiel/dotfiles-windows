@@ -5,23 +5,12 @@
 	whitespace = warn
 [core]
 	autocrlf = input
-	editor = vim
+	editor = subl --wait
 [url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"
 	pushInsteadOf = "git://github.com/"
 [push]
 	default = simple
-[diff]
-	tool = p4merge
-[difftool]
-	prompt = false
-[difftool "p4merge"]
-	path = p4merge
 [merge]
-	tool = p4merge
-[mergetool]
-	prompt = false
-	keepBackup = false
-[mergetool "p4merge"]
-	path = p4merge
+	tool = smerge

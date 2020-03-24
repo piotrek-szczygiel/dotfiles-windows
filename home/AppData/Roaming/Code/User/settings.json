@@ -1,8 +1,0 @@
-{
-    "editor.fontFamily": "Consolas NF",
-    "python.formatting.provider": "black",
-    "python.linting.flake8Enabled": true,
-    "python.linting.pylintEnabled": false,
-    "python.linting.enabled": true,
-    "terminal.integrated.shell.windows": "cmd.exe",
-}
