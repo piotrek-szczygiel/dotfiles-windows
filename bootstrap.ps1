@@ -53,4 +53,9 @@ git remote set-url origin "$PushUrl"
 # Point %DOTFILES% to correct directory
 [Environment]::SetEnvironmentVariable("DOTFILES", "$Destination", "User")
 
-Write-Host "Issue 'sudo %DOTFILES%\link-all.bat' from cmd.exe to link configuration files"
+Write-Host @"
+
+
+Enter following command in new cmd.exe window to link all your configuration:
+    sudo %DOTFILES%\link-all.bat
+@"
