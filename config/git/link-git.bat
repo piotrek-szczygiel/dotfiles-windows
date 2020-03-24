@@ -1,5 +1,5 @@
 @echo off
 pushd %userprofile%
-del /q .gitconfig
+del .gitconfig >nul 2>&1
 mklink .gitconfig %dotfiles%\config\git\.gitconfig
 popd
