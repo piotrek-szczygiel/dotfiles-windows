@@ -43,6 +43,7 @@ foreach ($Tool in $UserTools) {
 }
 
 # Clone the dotfiles repository
+Remove-Item "$Destination" -Force -Recurse -ErrorAction SilentlyContinue
 git clone "$CloneUrl" "$Destination"
 
 # Set remote for pushing
