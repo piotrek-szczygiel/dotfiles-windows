@@ -15,6 +15,7 @@ $UserTools = @(
     "7zip",
     "autohotkey",
     "bat",
+    "clink",
     "coreutils",
     "everything",
     "fd",

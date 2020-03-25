@@ -22,5 +22,7 @@
 	"shift_tab_unindent": true,
 	"show_encoding": true,
 	"show_line_endings": true,
-	"theme": "gruvbox.sublime-theme"
+	"theme": "gruvbox.sublime-theme",
+	"trim_trailing_white_space_on_save": true,
+	"ensure_newline_at_eof_on_save": true
 }
