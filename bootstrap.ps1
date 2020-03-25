@@ -34,6 +34,7 @@ $UserTools = @(
     "unlocker",
     "vscode",
     "wget",
+    "winmerge",
     "wox"
 )
 
