@@ -14,3 +14,5 @@
 	default = simple
 [merge]
 	tool = smerge
+[credential]
+	helper = manager

@@ -1,9 +1,5 @@
 {
 	"auto_find_in_selection": true,
-	"block_caret": true,
-	"caret_extra_bottom": 0,
-	"caret_extra_top": 0,
-	"caret_style": "blink",
 	"close_windows_when_empty": true,
 	"color_scheme": "Packages/gruvbox/gruvbox (Dark) (Medium).sublime-color-scheme",
 	"drag_text": false,
