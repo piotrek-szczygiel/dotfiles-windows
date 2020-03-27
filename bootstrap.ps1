@@ -43,14 +43,14 @@ foreach ($Tool in $UserTools) {
     scoop install $Tool
 }
 
-# Clone the dotfiles repository
-Remove-Item "$Destination" -Force -Recurse -ErrorAction SilentlyContinue
-Remove-Item "$env:USERPROFILE\.gitconfig" -ErrorAction SilentlyContinue
-git clone "$CloneUrl" "$Destination"
-
-# Set remote for pushing
-Set-Location -Path "$Destination"
-git remote set-url origin "$PushUrl"
+if (Test-Path "$Destination" -PathType Container) {
+    Set-Location -Path "$Destination"
+    git pull
+} else {
+    git clone "$CloneUrl" "$Destination"
+    Set-Location -Path "$Destination"
+    git remote set-url origin "$PushUrl"
+}
 
 # Point %DOTFILES% to correct directory
 [Environment]::SetEnvironmentVariable("DOTFILES", "$Destination", "User")
