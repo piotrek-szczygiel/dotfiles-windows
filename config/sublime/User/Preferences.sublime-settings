@@ -3,6 +3,7 @@
 	"close_windows_when_empty": true,
 	"color_scheme": "Packages/gruvbox/gruvbox (Dark) (Medium).sublime-color-scheme",
 	"drag_text": false,
+	"ensure_newline_at_eof_on_save": true,
 	"gruvbox_statusbar_xxs": true,
 	"gruvbox_tabs_xxs": true,
 	"highlight_line": true,
@@ -19,6 +20,5 @@
 	"show_encoding": true,
 	"show_line_endings": true,
 	"theme": "gruvbox.sublime-theme",
-	"trim_trailing_white_space_on_save": true,
-	"ensure_newline_at_eof_on_save": true
+	"trim_trailing_white_space_on_save": true
 }

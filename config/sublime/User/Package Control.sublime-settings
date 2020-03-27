@@ -15,10 +15,12 @@
 		"PowerShell",
 		"Python 3",
 		"SideBarEnhancements",
+		"sublack",
 		"SublimeLinter",
 		"SublimeLinter-flake8",
 		"SublimeLinter-gcc",
 		"Superlime",
-		"Terminal"
+		"Terminal",
+		"Virtualenv"
 	]
 }

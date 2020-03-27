@@ -16,3 +16,5 @@
 	tool = smerge
 [credential]
 	helper = manager
+[includeIf "gitdir/i:C/ibm/"]
+	path = "C:/ibm/.gitconfig"
