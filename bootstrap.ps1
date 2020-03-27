@@ -57,7 +57,7 @@ if (Test-Path "$Destination" -PathType Container) {
 Write-Host "Setting dotfiles environment variable to: $Destination"
 [Environment]::SetEnvironmentVariable("dotfiles", "$Destination", "User")
 
-if (-Not ($env:Path -Like "*$Destination*")) {
+if (-Not ($env:Path -Like "*$Destination\bin*")) {
     Write-Host "Adding to PATH: $Destination"
     [Environment]::SetEnvironmentVariable("Path", $env:Path + ";$Destination\bin", "User")
 }
