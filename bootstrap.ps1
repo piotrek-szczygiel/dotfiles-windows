@@ -63,8 +63,11 @@ if (-Not ($env:Path -Like "*$Destination\bin*")) {
     [Environment]::SetEnvironmentVariable("Path", $env:Path + ";$Destination\bin", "User")
 }
 
-[Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
+if (-Not ($env:Path -Like "*$env:USERPROFILE\scoop\apps\clink\current\profile*")) {
+    [Environment]::SetEnvironmentVariable("Path", $env:Path + ";$env:USERPROFILE\scoop\apps\clink\current\profile", "User")
+}
 
+[Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
 
 Write-Host "Setting keyboard repeat speed and delay"
 Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardSpeed" 31
