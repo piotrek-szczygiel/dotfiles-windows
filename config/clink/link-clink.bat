@@ -1,6 +1,5 @@
 @echo off
-mkdir %userprofile%\scoop\persist\clink\profile
-pushd %userprofile%\scoop\persist\clink\profile
-del settings >nul 2>&1
-mklink settings %dotfiles%\config\clink\settings
+pushd "%userprofile%\scoop\persist\clink"
+rmdir /s /q "profile"
+mklink /d "profile" "%dotfiles%\config\clink\profile"
 popd
