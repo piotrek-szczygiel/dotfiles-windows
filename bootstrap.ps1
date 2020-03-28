@@ -62,5 +62,9 @@ if (-Not ($env:Path -Like "*$Destination\bin*")) {
     [Environment]::SetEnvironmentVariable("Path", $env:Path + ";$Destination\bin", "User")
 }
 
+Write-Host "Setting keyboard repeat speed and delay"
+Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardSpeed" 31
+Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardDelay" 0
+
 Write-Host "Launching linking script with administrator rights"
 sudo cmd /c "%DOTFILES%\link-all.bat"
