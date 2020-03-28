@@ -54,13 +54,15 @@ if (Test-Path "$Destination" -PathType Container) {
     git remote set-url origin "$PushUrl"
 }
 
-Write-Host "Setting dotfiles environment variable to: $Destination"
+Write-Host "Setting environment variables"
 [Environment]::SetEnvironmentVariable("dotfiles", "$Destination", "User")
 
 if (-Not ($env:Path -Like "*$Destination\bin*")) {
-    Write-Host "Adding to PATH: $Destination"
     [Environment]::SetEnvironmentVariable("Path", $env:Path + ";$Destination\bin", "User")
 }
+
+[Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
+
 
 Write-Host "Setting keyboard repeat speed and delay"
 Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardSpeed" 31
