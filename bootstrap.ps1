@@ -16,6 +16,7 @@ $UserTools = @(
     "bat",
     "clink",
     "coreutils",
+    "discord",
     "everything",
     "fd",
     "firefox",
