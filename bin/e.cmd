@@ -1,1 +1,1 @@
-@subl.exe %*
+@explorer.exe %*
