@@ -12,6 +12,7 @@ scoop bucket add extras
 
 $UserTools = @(
     "7zip",
+    "altdrag",
     "autohotkey",
     "bat",
     "clink",
