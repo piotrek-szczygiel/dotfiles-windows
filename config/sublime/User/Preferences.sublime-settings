@@ -1,7 +1,7 @@
 {
 	"auto_find_in_selection": true,
 	"close_windows_when_empty": true,
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"color_scheme": "Packages/gruvbox/gruvbox (Dark) (Medium).sublime-color-scheme",
 	"drag_text": false,
 	"ensure_newline_at_eof_on_save": true,
 	"gruvbox_statusbar_xxs": true,
@@ -20,6 +20,5 @@
 	"show_encoding": true,
 	"show_line_endings": true,
 	"theme": "gruvbox.sublime-theme",
-	"trim_trailing_white_space_on_save": true,
-	"translate_tabs_to_spaces": true
+	"trim_trailing_white_space_on_save": true
 }
