@@ -63,7 +63,6 @@ nnoremap <silent> <Leader>, :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>p :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>s :Rg<CR>
-nnoremap <silent> <Leader>t :Tags<CR>
 
 nnoremap <silent> <Leader>f :set guifont=*<CR>
 
