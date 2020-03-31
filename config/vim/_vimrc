@@ -23,12 +23,14 @@ set autoread
 set backup
 set encoding=utf-8
 set expandtab
+set fileformat=unix
 set hidden
 set ignorecase
 set laststatus=2
 set list
 set noerrorbells
 set noshowmode
+set noswapfile
 set path+=**
 set shiftround
 set shiftwidth=4

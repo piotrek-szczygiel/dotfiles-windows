@@ -17,6 +17,7 @@ $UserTools = @(
     "clink",
     "coreutils",
     "discord",
+    "dos2unix",
     "everything",
     "fd",
     "firefox",
