@@ -1,6 +1,7 @@
-source $VIMRUNTIME/defaults.vim
-source $VIMRUNTIME/mswin.vim
+source $VIMRUNTIME\defaults.vim
+source $VIMRUNTIME\mswin.vim
 
+" Plugins
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-rooter'
@@ -13,23 +14,23 @@ Plug 'lfilho/cosco.vim'
 Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sleuth'
+Plug 'tomtom/tcomment_vim'
 
 call plug#end()
 
+" Settings
 set autoread
 set backup
 set encoding=utf-8
 set expandtab
 set hidden
 set ignorecase
+set laststatus=2
 set list
-set listchars=tab:»»
-set mouse=a
 set noerrorbells
 set path+=**
 set shiftround
 set shiftwidth=4
-set showbreak=…
 set smartcase
 set splitbelow
 set splitright
@@ -44,10 +45,14 @@ set backupdir=$TEMP
 set directory=$TEMP
 set undodir=$TEMP
 
+" Keybindings
 let mapleader = " "
 
 vnoremap > >gv
 vnoremap < <gv
+
+noremap <silent> k gk
+noremap <silent> j gj
 
 nnoremap <silent> <Leader>, :e $MYVIMRC<CR>
 
@@ -56,10 +61,18 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>s :Rg<CR>
 nnoremap <silent> <Leader>t :Tags<CR>
 
+nnoremap <silent> <Leader>f :set guifont=*<CR>
+
 nnoremap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
+
+" Appearance
+set listchars=tab:⯈\ 
+set showbreak=⮎\ 
 
 colorscheme gruvbox
 set background=dark
+
+let g:lightline = { 'colorscheme': 'gruvbox' }
 
 nnoremap <Leader><Leader> :call gruvbox#hls_hide()<CR>
 
@@ -71,4 +84,3 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd CursorHold * checktime
-
