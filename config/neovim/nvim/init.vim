@@ -27,6 +27,7 @@ set hidden
 set ignorecase
 set mouse=a
 set number
+set path+=**
 set scrolloff=5
 set shiftround
 set shiftwidth=4
