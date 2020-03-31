@@ -1,7 +1,9 @@
 {
 	"auto_find_in_selection": true,
+	"block_caret": true,
+	"caret_style": "blink",
 	"close_windows_when_empty": true,
-	"color_scheme": "Packages/gruvbox/gruvbox (Dark) (Medium).sublime-color-scheme",
+	"color_scheme": "Packages/Witness color scheme/Witness.sublime-color-scheme",
 	"drag_text": false,
 	"ensure_newline_at_eof_on_save": true,
 	"gruvbox_statusbar_xxs": true,
@@ -16,9 +18,11 @@
 	[
 		"draw_active"
 	],
+	"line_numbers": false,
 	"shift_tab_unindent": true,
 	"show_encoding": true,
 	"show_line_endings": true,
-	"theme": "gruvbox.sublime-theme",
-	"trim_trailing_white_space_on_save": true
+	"theme": "Default.sublime-theme",
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": true
 }

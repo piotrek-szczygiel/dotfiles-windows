@@ -9,7 +9,6 @@
 		"BracketHighlighter",
 		"EditorConfig",
 		"GitGutter",
-		"gruvbox",
 		"Markdown Extended",
 		"Package Control",
 		"PowerShell",
@@ -21,6 +20,7 @@
 		"SublimeLinter-gcc",
 		"Superlime",
 		"Terminal",
-		"Virtualenv"
+		"Virtualenv",
+		"Witness color scheme"
 	]
 }
