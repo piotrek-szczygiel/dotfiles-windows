@@ -10,10 +10,6 @@
 	"gruvbox_tabs_xxs": true,
 	"highlight_line": true,
 	"hot_exit": false,
-	"ignored_packages":
-	[
-		"Vintage"
-	],
 	"indent_guide_options":
 	[
 		"draw_active"
