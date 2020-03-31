@@ -28,6 +28,7 @@ set ignorecase
 set laststatus=2
 set list
 set noerrorbells
+set noshowmode
 set path+=**
 set shiftround
 set shiftwidth=4
@@ -36,6 +37,7 @@ set splitbelow
 set splitright
 set t_vb=
 set tabstop=4
+set termguicolors
 set undofile
 set updatetime=1000
 set visualbell
