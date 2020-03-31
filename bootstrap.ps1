@@ -22,6 +22,7 @@ $UserTools = @(
     "fd",
     "firefox",
     "freecommander",
+    "fzf",
     "gcc",
     "lua",
     "neovim",
