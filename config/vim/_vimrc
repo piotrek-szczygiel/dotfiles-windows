@@ -1,2 +1,37 @@
 source $VIMRUNTIME/defaults.vim
 source $VIMRUNTIME/mswin.vim
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sleuth'
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+
+set expandtab
+set hidden
+set ignorecase
+set mouse=a
+set path+=**
+set shiftround
+set shiftwidth=4
+set smartcase
+set splitbelow
+set splitright
+set tabstop=4
+set wildmode=longest,list,full
+
+vnoremap > >gv
+vnoremap < <gv
+
+colorscheme gruvbox
+set background=dark
+
+nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
+nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
+nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
+
+nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
+
