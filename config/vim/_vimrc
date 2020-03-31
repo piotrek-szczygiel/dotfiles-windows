@@ -3,35 +3,72 @@ source $VIMRUNTIME/mswin.vim
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-sleuth'
+Plug 'airblade/vim-rooter'
+Plug 'dense-analysis/ale'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-sneak'
+Plug 'lfilho/cosco.vim'
 Plug 'morhetz/gruvbox'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-sleuth'
 
 call plug#end()
 
+set autoread
+set backup
+set encoding=utf-8
 set expandtab
 set hidden
 set ignorecase
+set list
+set listchars=tab:»»
 set mouse=a
+set noerrorbells
 set path+=**
 set shiftround
 set shiftwidth=4
+set showbreak=…
 set smartcase
 set splitbelow
 set splitright
+set t_vb=
 set tabstop=4
+set undofile
+set updatetime=1000
+set visualbell
 set wildmode=longest,list,full
+
+set backupdir=$TEMP
+set directory=$TEMP
+set undodir=$TEMP
+
+let mapleader = " "
 
 vnoremap > >gv
 vnoremap < <gv
 
+nnoremap <silent> <Leader>, :e $MYVIMRC<CR>
+
+nnoremap <silent> <Leader>p :Files<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>s :Rg<CR>
+nnoremap <silent> <Leader>t :Tags<CR>
+
+nnoremap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
+
 colorscheme gruvbox
 set background=dark
 
-nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
-nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
-nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
+nnoremap <Leader><Leader> :call gruvbox#hls_hide()<CR>
 
 nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
 nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
 nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd CursorHold * checktime
 

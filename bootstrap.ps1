@@ -12,7 +12,6 @@ scoop bucket add extras
 
 $UserTools = @(
     "7zip",
-    "altdrag",
     "autohotkey",
     "bat",
     "clink",
@@ -31,7 +30,6 @@ $UserTools = @(
     "ripgrep",
     "rustup",
     "sublime-merge",
-    "sublime-text",
     "sudo",
     "uncap",
     "unlocker",
@@ -70,6 +68,7 @@ if (-Not ($env:Path -Like "*$env:USERPROFILE\scoop\apps\clink\current\profile*")
 }
 
 [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
+[Environment]::SetEnvironmentVariable("FZF_DEFAULT_COMMAND", "fd --type f", "User")
 [Environment]::SetEnvironmentVariable("FZF_DEFAULT_OPTS", "--height=35%", "User")
 
 Write-Host "Setting keyboard repeat speed and delay"
