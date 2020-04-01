@@ -1,6 +1,0 @@
-set guifont=Consolas_NF:h11:cANSI:qDRAFT
-set guioptions=e
-set columns=100
-set lines=30
-set visualbell
-set t_vb=
