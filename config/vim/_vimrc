@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-rooter'
 Plug 'dense-analysis/ale'
-Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
@@ -15,8 +14,27 @@ Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sleuth'
 Plug 'tomtom/tcomment_vim'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
+
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_fix_on_save = 1
+let g:ale_python_auto_pipenv = 1
+
+" let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.6 } }
+let g:fzf_preview_window = ''
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview',
+  \   'bat --color=always --style=plain --line-range :300 {}']}, <bang>0)
+
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_liststyle = 3
+let g:netrw_list_hide = netrw_gitignore#Hide()
+let g:netrw_list_hide .= ',(^\|\s\s\)\zs\.\S\+'
 
 " Settings
 set autoread
@@ -58,26 +76,27 @@ vnoremap < <gv
 noremap <silent> k gk
 noremap <silent> j gj
 
-nnoremap <silent> <Leader>, :e $MYVIMRC<CR>
+nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
+nnoremap <silent> <leader>vg :e $MYGVIMRC<CR>
+nnoremap <silent> <leader>vr :source $MYVIMRC<CR>
 
-nnoremap <silent> <Leader>p :Files<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>s :Rg<CR>
+nnoremap <silent> <leader>p :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>f :Rg<CR>
 
-nnoremap <silent> <Leader>f :set guifont=*<CR>
+nnoremap <silent> <leader>gf :set guifont=*<CR>
+nnoremap <silent> <leader>tb :let &background = ( &background == "dark" ? "light" : "dark" )<CR>
+nnoremap <silent> <leader>tn :set number!<CR>
 
-nnoremap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
+nnoremap <silent> <leader>; <Plug>(cosco-commaOrSemiColon)
+nnoremap <silent> <leader><leader> :call gruvbox#hls_hide()<CR>
 
 " Appearance
-set listchars=tab:⯈\ 
-set showbreak=⮎\ 
-
 colorscheme gruvbox
 set background=dark
 
-let g:lightline = { 'colorscheme': 'gruvbox' }
-
-nnoremap <Leader><Leader> :call gruvbox#hls_hide()<CR>
+set listchars=tab:⯈\ 
+set showbreak=⮎\ 
 
 nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
 nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/

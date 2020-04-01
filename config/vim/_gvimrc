@@ -1,6 +1,6 @@
-set guifont=Consolas:h11
+set guifont=CaskaydiaCove_NF:h11
 set guioptions=e
-set columns=120
-set lines=35
+set columns=100
+set lines=30
 set visualbell
 set t_vb=
