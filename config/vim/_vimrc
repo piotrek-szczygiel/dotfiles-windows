@@ -79,6 +79,7 @@ noremap <silent> j gj
 nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
 nnoremap <silent> <leader>vg :e $MYGVIMRC<CR>
 nnoremap <silent> <leader>vr :source $MYVIMRC<CR>
+nnoremap <silent> <leader>vp :source $MYVIMRC \| :PlugUpdate<CR>
 
 nnoremap <silent> <leader>p :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
