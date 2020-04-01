@@ -1,1 +1,1 @@
-@lsd --color always --icon always %*
+@ls.exe --color=always %*
