@@ -26,7 +26,6 @@ $UserTools = @(
     "gcc",
     "lua",
     "netcat",
-    "neovim",
     "putty",
     "python",
     "ripgrep",
