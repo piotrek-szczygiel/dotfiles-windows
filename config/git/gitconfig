@@ -5,7 +5,7 @@
 	whitespace = warn
 [core]
 	autocrlf = input
-	editor = nvim
+	editor = oni2.exe --nofork --quiet
 [url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"
