@@ -18,5 +18,8 @@
     "terminal.integrated.shell.windows": "cmd.exe",
     "workbench.colorTheme": "Eva Dark Bold",
     "workbench.startupEditor": "readme",
-    "extensions.ignoreRecommendations": false
+    "extensions.ignoreRecommendations": false,
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
+    }
 }
