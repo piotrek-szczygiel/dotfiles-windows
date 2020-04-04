@@ -1,5 +1,4 @@
 {
-    "editor.fontFamily": "Consolas NF",
     "python.formatting.provider": "black",
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
@@ -7,4 +6,7 @@
     "terminal.integrated.shell.windows": "cmd.exe",
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnSave": true,
+    "mesonbuild.configureOnOpen": true,
 }

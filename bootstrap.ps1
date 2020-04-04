@@ -49,7 +49,8 @@ if (Test-Path "$Destination" -PathType Container) {
     Write-Host "Updating existing dotfiles"
     Set-Location -Path "$Destination"
     git pull
-} else {
+}
+else {
     Write-Host "Downloading dotfiles"
     git clone "$CloneUrl" "$Destination"
     Set-Location -Path "$Destination"
@@ -68,6 +69,7 @@ if (-Not ($env:Path -Like "*$env:USERPROFILE\scoop\apps\clink\current\profile*")
 }
 
 [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
+[Environment]::SetEnvironmentVariable("PYTHONPATH", "$env:USERPROFILE\scoop\apps\python\current", "User")
 [Environment]::SetEnvironmentVariable("FZF_DEFAULT_COMMAND", "fd --type file --follow --hidden --exclude .git", "User")
 [Environment]::SetEnvironmentVariable("FZF_DEFAULT_OPTS", "--height=35%", "User")
 
