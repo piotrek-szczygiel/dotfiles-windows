@@ -24,6 +24,7 @@ $UserTools = @(
     "freecommander",
     "fzf",
     "gcc",
+    "keepassxc",
     "lua",
     "netcat",
     "notepadplusplus",
@@ -59,15 +60,6 @@ else {
 
 Write-Host "Setting environment variables"
 [Environment]::SetEnvironmentVariable("dotfiles", "$Destination", "User")
-
-if (-Not ($env:Path -Like "*$Destination\bin*")) {
-    [Environment]::SetEnvironmentVariable("Path", $env:Path + ";$Destination\bin", "User")
-}
-
-if (-Not ($env:Path -Like "*$env:USERPROFILE\scoop\apps\clink\current\profile*")) {
-    [Environment]::SetEnvironmentVariable("Path", $env:Path + ";$env:USERPROFILE\scoop\apps\clink\current\profile", "User")
-}
-
 [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
 [Environment]::SetEnvironmentVariable("PYTHONPATH", "$env:USERPROFILE\scoop\apps\python\current", "User")
 [Environment]::SetEnvironmentVariable("FZF_DEFAULT_COMMAND", "fd --type file --follow --hidden --exclude .git", "User")
@@ -79,3 +71,7 @@ Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardDelay" 0
 
 Write-Host "Launching linking script with administrator rights"
 sudo cmd /c "%DOTFILES%\link-all.bat"
+
+Write-Host "Add to PATH: $Destination\bin"
+Write-Host "Add to PATH: "$env:USERPROFILE\scoop\apps\clink\current\profile"
+Write-Host "Add to PATH: "$env:USERPROFILE\OneDrive\Windows"
