@@ -73,5 +73,5 @@ Write-Host "Launching linking script with administrator rights"
 sudo cmd /c "%DOTFILES%\link-all.bat"
 
 Write-Host "Add to PATH: $Destination\bin"
-Write-Host "Add to PATH: "$env:USERPROFILE\scoop\apps\clink\current\profile"
-Write-Host "Add to PATH: "$env:USERPROFILE\OneDrive\Windows"
+Write-Host "Add to PATH: $env:USERPROFILE\scoop\apps\clink\current\profile"
+Write-Host "Add to PATH: $env:USERPROFILE\OneDrive\Windows"
