@@ -5,7 +5,7 @@
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "selection",
-    "editor.wordWrap": "bounded",
+    "editor.wordWrap": "on",
     "editor.wrappingIndent": "deepIndent",
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
@@ -18,7 +18,6 @@
     "terminal.integrated.shell.windows": "cmd.exe",
     "workbench.colorTheme": "Eva Dark Bold",
     "workbench.startupEditor": "readme",
-    "extensions.ignoreRecommendations": false,
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     }

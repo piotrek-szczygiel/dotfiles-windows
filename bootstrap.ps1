@@ -36,6 +36,7 @@ $UserTools = @(
     "sudo",
     "unlocker",
     "vscode",
+    "vswhere",
     "wget",
     "winmerge",
     "wox"
