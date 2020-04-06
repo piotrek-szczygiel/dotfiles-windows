@@ -16,8 +16,9 @@
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
     "terminal.integrated.shell.windows": "cmd.exe",
-    "workbench.colorTheme": "Eva Dark Bold",
+    "workbench.colorTheme": "Eva Dark",
     "workbench.startupEditor": "readme",
+    "workbench.tree.indent": 24,
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     }
