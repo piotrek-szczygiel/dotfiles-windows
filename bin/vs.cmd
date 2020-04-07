@@ -5,12 +5,4 @@ if "%1" == "" (
     set arch=%1
 )
 
-for /f "usebackq delims=" %%i in (`vswhere.exe -prerelease -latest -property installationPath`) do (
-    if exist "%%i\VC\Auxiliary\Build\vcvarsall.bat" (
-        %comspec% /k "%%i\VC\Auxiliary\Build\vcvarsall.bat" %ARCH% %*
-        exit /b
-    )
-)
-
-rem Instance or command prompt not found
-exit /b 2
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %arch%
