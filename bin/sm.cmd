@@ -1,2 +1,1 @@
-@echo off
-smerge.exe %*
+@smerge.exe %*

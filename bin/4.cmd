@@ -1,2 +1,1 @@
-@echo off
-start "" 4ed.exe %*
+@start "" 4ed.exe %*
