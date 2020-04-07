@@ -5,6 +5,4 @@ if "%1" == "" (
     set arch=%1
 )
 
-call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %arch%
-
-set prompt=(%arch%) $P$G
+cmd.exe /k call set prompt=(%arch%) $P$G ^&^& "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %arch%
