@@ -1,8 +1,6 @@
 {
     "editor.cursorStyle": "block",
-    "editor.fontFamily": "Cascadia Code",
-    "editor.fontSize": 16,
-    "editor.formatOnSave": true,
+    "debug.console.fontSize": 16,
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "selection",
     "editor.wordWrap": "on",
@@ -10,7 +8,6 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "mesonbuild.configureOnOpen": true,
     "python.formatting.provider": "black",
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
