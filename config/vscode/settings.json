@@ -18,5 +18,6 @@
     "workbench.tree.indent": 24,
     "[markdown]": {
         "files.trimTrailingWhitespace": false
-    }
+    },
+    "window.zoomLevel": 0
 }
