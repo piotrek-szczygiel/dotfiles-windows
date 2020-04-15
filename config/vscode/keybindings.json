@@ -5,15 +5,11 @@
         "command": "workbench.action.terminal.new"
     },
     {
-        "key": "ctrl+shift+oem_3",
-        "command": "-workbench.action.terminal.new"
-    },
-    {
         "key": "ctrl+oem_7",
         "command": "workbench.action.terminal.toggleTerminal"
     },
     {
-        "key": "ctrl+oem_3",
-        "command": "-workbench.action.terminal.toggleTerminal"
+        "key": "f9",
+        "command": "workbench.action.tasks.build"
     }
 ]
