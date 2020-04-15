@@ -1,13 +1,16 @@
 {
     "editor.cursorStyle": "block",
-    "debug.console.fontSize": 16,
+    "editor.fontFamily": "Consolas",
+    "editor.fontSize": 16,
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "selection",
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "deepIndent",
+    "extensions.ignoreRecommendations": true,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "latex-workshop.view.pdf.viewer": "browser",
     "python.formatting.provider": "black",
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
@@ -19,5 +22,7 @@
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     },
-    "window.zoomLevel": 0
+    "files.associations": {
+        "*.svelte": "html"
+    },
 }
