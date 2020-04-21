@@ -18,6 +18,7 @@ $UserTools = @(
     "coreutils",
     "discord",
     "dos2unix",
+    "emacs",
     "everything",
     "fd",
     "freecommander",
