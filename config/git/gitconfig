@@ -14,6 +14,6 @@
 [merge]
     tool = smerge
 [credential]
-    helper = manager
+	helper = manager
 [includeIf "gitdir/i:C:/ibm/"]
     path = .gitconfig-ibm
