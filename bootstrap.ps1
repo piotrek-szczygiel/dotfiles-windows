@@ -22,7 +22,6 @@ $UserTools = @(
     "everything",
     "fd",
     "freecommander",
-    "fzf",
     "gcc",
     "keepassxc",
     "lua",
@@ -31,12 +30,10 @@ $UserTools = @(
     "putty",
     "python",
     "ripgrep",
-    "sublime-merge",
     "sudo",
     "vscode",
     "wget",
     "winmerge",
-    "wox"
 )
 
 Write-Host "Installing scoop tools"
@@ -57,11 +54,10 @@ else {
 }
 
 Write-Host "Setting environment variables"
+[Environment]::SetEnvironmentVariable("HOME", "$env:USERPROFILE", "User")
 [Environment]::SetEnvironmentVariable("dotfiles", "$Destination", "User")
 [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
 [Environment]::SetEnvironmentVariable("PYTHONPATH", "$env:USERPROFILE\scoop\apps\python\current", "User")
-[Environment]::SetEnvironmentVariable("FZF_DEFAULT_COMMAND", "fd --type file --follow --hidden --exclude .git", "User")
-[Environment]::SetEnvironmentVariable("FZF_DEFAULT_OPTS", "--height=35%", "User")
 
 Write-Host "Setting keyboard repeat speed and delay"
 Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardSpeed" 31
