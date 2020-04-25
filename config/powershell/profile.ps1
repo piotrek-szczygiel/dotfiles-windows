@@ -1,6 +1,4 @@
-﻿Import-Module ZLocation
-
-function Remove-Alias ([string] $AliasName) {
+﻿function Remove-Alias ([string] $AliasName) {
 	while (Test-Path Alias:$AliasName) {
 		Remove-Item Alias:$AliasName -Force 2> $null
 	}
@@ -72,3 +70,4 @@ function gs {
 }
 
 Invoke-Expression (&starship init powershell)
+Import-Module ZLocation
