@@ -13,7 +13,6 @@
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
-    "terminal.integrated.shell.windows": "cmd.exe",
     "trailing-spaces.deleteModifiedLinesOnly": true,
     "trailing-spaces.syntaxIgnore": ["markdown"],
     "trailing-spaces.trimOnSave": true,

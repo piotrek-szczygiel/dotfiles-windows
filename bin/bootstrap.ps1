@@ -20,7 +20,6 @@ $UserTools = @(
     "everything",
     "fd",
     "freecommander",
-    "gcc",
     "keepassxc",
     "netcat",
     "notepadplusplus",
@@ -30,7 +29,7 @@ $UserTools = @(
     "sudo",
     "vscode",
     "wget",
-    "winmerge",
+    "winmerge"
 )
 
 Write-Host "Installing scoop tools"
@@ -59,12 +58,10 @@ Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardSpeed" 31
 Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardDelay" 0
 
 Write-Host "Launching linking script with administrator rights"
-sudo cmd /c "%DOTFILES%\link-all.bat"
+sudo cmd /c "%DOTFILES%\bin\link-all.bat"
 
-Write-Host "Installing PsGet"
-(new-object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | iex
-
-Write-Host "Installing Jump-Location"
+Write-Host "Installing PsGet and Jump-Location module"
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/chaliy/psget/master/GetPsGet.ps1")
 Install-Module Jump.Location
 
 Write-Host "Add to PATH: $Destination\bin"
