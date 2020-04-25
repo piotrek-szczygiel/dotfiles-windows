@@ -20,7 +20,5 @@
     "workbench.colorTheme": "Darktooth",
     "workbench.startupEditor": "readme",
     "workbench.tree.indent": 24,
-    "files.associations": {
-        "*.svelte": "html"
-    },
+    "files.associations": { "*.svelte": "html" }
 }
