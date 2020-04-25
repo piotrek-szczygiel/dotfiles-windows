@@ -54,6 +54,7 @@ Write-Host "Setting environment variables"
 [Environment]::SetEnvironmentVariable("HOME", "$env:USERPROFILE", "User")
 [Environment]::SetEnvironmentVariable("dotfiles", "$Destination", "User")
 [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
+[Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
 
 Write-Host "Setting keyboard repeat speed and delay"
 Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardSpeed" 31
