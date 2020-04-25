@@ -14,7 +14,6 @@ $UserTools = @(
     "7zip",
     "autohotkey",
     "bat",
-    "clink",
     "coreutils",
     "discord",
     "dos2unix",
@@ -23,7 +22,6 @@ $UserTools = @(
     "freecommander",
     "gcc",
     "keepassxc",
-    "lua",
     "netcat",
     "notepadplusplus",
     "putty",
@@ -44,8 +42,7 @@ if (Test-Path "$Destination" -PathType Container) {
     Write-Host "Updating existing dotfiles"
     Set-Location -Path "$Destination"
     git pull
-}
-else {
+} else {
     Write-Host "Downloading dotfiles"
     git clone "$CloneUrl" "$Destination"
     Set-Location -Path "$Destination"
@@ -56,7 +53,6 @@ Write-Host "Setting environment variables"
 [Environment]::SetEnvironmentVariable("HOME", "$env:USERPROFILE", "User")
 [Environment]::SetEnvironmentVariable("dotfiles", "$Destination", "User")
 [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
-[Environment]::SetEnvironmentVariable("PYTHONPATH", "$env:USERPROFILE\scoop\apps\python\current", "User")
 
 Write-Host "Setting keyboard repeat speed and delay"
 Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardSpeed" 31
@@ -64,6 +60,12 @@ Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardDelay" 0
 
 Write-Host "Launching linking script with administrator rights"
 sudo cmd /c "%DOTFILES%\link-all.bat"
+
+Write-Host "Installing PsGet"
+(new-object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | iex
+
+Write-Host "Installing Jump-Location"
+Install-Module Jump.Location
 
 Write-Host "Add to PATH: $Destination\bin"
 Write-Host "Add to PATH: $env:USERPROFILE\scoop\apps\clink\current\profile"
