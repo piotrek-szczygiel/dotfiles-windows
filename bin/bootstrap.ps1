@@ -26,6 +26,7 @@ $UserTools = @(
     "putty",
     "python",
     "ripgrep",
+    "slack",
     "sudo",
     "vscode",
     "wget",
