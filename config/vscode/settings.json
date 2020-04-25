@@ -1,6 +1,6 @@
 {
     "editor.cursorStyle": "block",
-    "editor.fontFamily": "Consolas",
+    "editor.fontFamily": "Consolas NF",
     "editor.fontSize": 16,
     "editor.minimap.enabled": true,
     "editor.renderWhitespace": "selection",

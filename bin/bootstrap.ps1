@@ -27,6 +27,7 @@ $UserTools = @(
     "python",
     "ripgrep",
     "slack",
+    "starship",
     "sudo",
     "vscode",
     "wget",
@@ -61,9 +62,8 @@ Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardDelay" 0
 Write-Host "Launching linking script with administrator rights"
 sudo cmd /c "%DOTFILES%\bin\link-all.bat"
 
-Write-Host "Installing PsGet and Jump-Location module"
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/chaliy/psget/master/GetPsGet.ps1")
-Install-Module Jump.Location
+Write-Host "Installing PowerShell modules"
+Install-Module ZLocation -Scope CurrentUser
 
 Write-Host "Add to PATH: $Destination\bin"
 Write-Host "Add to PATH: $env:USERPROFILE\scoop\apps\clink\current\profile"

@@ -1,1 +1,0 @@
-@ls.exe --color=always %*
