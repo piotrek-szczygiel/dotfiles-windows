@@ -64,7 +64,7 @@ Write-Host "Launching linking script with administrator rights"
 sudo cmd /c "%DOTFILES%\bin\link-all.bat"
 
 Write-Host "Installing PowerShell modules"
-Install-Module ZLocation -Scope CurrentUser
+Install-Module Jump.Location -Scope CurrentUser
 
 Write-Host "Add to PATH: $Destination\bin"
 Write-Host "Add to PATH: $env:USERPROFILE\scoop\apps\clink\current\profile"

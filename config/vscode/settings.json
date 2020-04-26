@@ -1,4 +1,5 @@
 {
+    "editor.acceptSuggestionOnEnter": "off",
     "editor.cursorStyle": "block",
     "editor.fontFamily": "Consolas NF",
     "editor.fontSize": 16,
@@ -13,9 +14,7 @@
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
-    "trailing-spaces.deleteModifiedLinesOnly": true,
-    "trailing-spaces.syntaxIgnore": ["markdown"],
-    "trailing-spaces.trimOnSave": true,
+    "terminal.external.windowsExec": "wt.exe",
     "workbench.colorTheme": "Darktooth",
     "workbench.startupEditor": "readme",
     "workbench.tree.indent": 24,

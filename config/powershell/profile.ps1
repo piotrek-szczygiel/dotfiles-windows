@@ -1,4 +1,10 @@
-﻿function Remove-Alias ([string] $AliasName) {
+﻿Import-Module Jump.Location
+
+function global:prompt {
+    "$($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) ";
+}
+
+function Remove-Alias ([string] $AliasName) {
 	while (Test-Path Alias:$AliasName) {
 		Remove-Item Alias:$AliasName -Force 2> $null
 	}
@@ -27,6 +33,11 @@ function ll {
 Remove-Alias ga
 function ga {
     git add $args
+}
+
+Remove-Alias gus
+function gus {
+    git restore --staged $args
 }
 
 Remove-Alias gc
@@ -68,6 +79,3 @@ Remove-Alias gs
 function gs {
     git status $args
 }
-
-Invoke-Expression (&starship init powershell)
-Import-Module ZLocation
