@@ -21,6 +21,7 @@ $UserTools = @(
     "fd",
     "freecommander",
     "keepassxc",
+    "lsd",
     "netcat",
     "notepadplusplus",
     "putty",
@@ -66,5 +67,4 @@ Write-Host "Installing PowerShell modules"
 Install-Module Jump.Location -Scope CurrentUser
 
 Write-Host "Add to PATH: $Destination\bin"
-Write-Host "Add to PATH: $env:USERPROFILE\scoop\apps\clink\current\profile"
 Write-Host "Add to PATH: $env:USERPROFILE\OneDrive\Windows"
