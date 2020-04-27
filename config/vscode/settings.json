@@ -15,7 +15,7 @@
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
     "terminal.external.windowsExec": "wt.exe",
-    "workbench.colorTheme": "Darktooth",
+    "workbench.colorTheme": "Mayukai Mirage Gruvbox Darktooth",
     "workbench.startupEditor": "readme",
     "workbench.tree.indent": 24,
     "files.associations": { "*.svelte": "html" }
