@@ -1,3 +1,11 @@
 // Place your key bindings in this file to override the defaults
 [
+    {
+        "key": "ctrl+oem_7",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+shift+oem_7",
+        "command": "workbench.action.terminal.new"
+    },
 ]

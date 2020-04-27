@@ -4,10 +4,34 @@ function global:prompt {
     "$($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) ";
 }
 
+function optimize {
+    if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+        Write-Host "Run this script as an Administrator!" -ForegroundColor Red
+        return
+    }
+
+    Write-Host "Start optimization..." -ForegroundColor Yellow
+
+    $ngen_path = Join-Path -Path $env:windir -ChildPath "Microsoft.NET"
+
+    if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64") {
+        $ngen_path = Join-Path -Path $ngen_path -ChildPath "Framework64\ngen.exe"
+    } else {
+        $ngen_path = Join-Path -Path $ngen_path -ChildPath "Framework\ngen.exe"
+    }
+
+    $ngen_application_path = (Get-ChildItem -Path $ngen_path -Filter "ngen.exe" -Recurse | Where-Object {$_.Length -gt 0} | Select-Object -Last 1).Fullname
+
+    Set-Alias -Name ngen -Value $ngen_application_path
+    [System.AppDomain]::CurrentDomain.GetAssemblies() | foreach { ngen install $_.Location /nologo /verbose }
+
+    Write-Host "Optimization finished!" -ForegroundColor Green
+}
+
 function Remove-Alias ([string] $AliasName) {
-	while (Test-Path Alias:$AliasName) {
-		Remove-Item Alias:$AliasName -Force 2> $null
-	}
+    while (Test-Path Alias:$AliasName) {
+        Remove-Item Alias:$AliasName -Force 2> $null
+    }
 }
 
 Remove-Alias ex
