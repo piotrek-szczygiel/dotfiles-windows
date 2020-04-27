@@ -28,7 +28,8 @@
         "defaults":
         {
             // Put settings here that you want to apply to all profiles.
-            "fontFace": "Consolas NF"
+            "fontFace": "Consolas NF",
+            "startingDirectory": "."
         },
         "list":
         [
