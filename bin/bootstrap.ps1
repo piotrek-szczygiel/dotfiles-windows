@@ -31,6 +31,7 @@ $UserTools = @(
     "sudo",
     "vscode",
     "wget",
+    "windows-terminal",
     "winmerge"
 )
 
