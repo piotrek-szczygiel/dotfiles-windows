@@ -38,7 +38,9 @@
                 "name": "Windows PowerShell",
                 "commandline": "powershell.exe -nologo",
                 "hidden": false,
-                "colorScheme": "One Half Dark"
+                "colorScheme": "One Half Dark",
+                "useAcrylic": true,
+                "acrylicOpacity": 0.75
             },
             {
                 // Make changes here to the cmd.exe profile.
