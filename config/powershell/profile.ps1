@@ -22,12 +22,12 @@ function npp {
 
 Remove-Alias l
 function l {
-    lsd.exe $args
+    ls.exe --color=auto $args
 }
 
 Remove-Alias ll
 function ll {
-    lsd.exe -la $args
+    ls.exe --color=auto -la $args
 }
 
 Remove-Alias ga

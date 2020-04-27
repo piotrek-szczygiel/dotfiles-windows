@@ -21,7 +21,6 @@ $UserTools = @(
     "fd",
     "freecommander",
     "keepassxc",
-    "lsd",
     "netcat",
     "notepadplusplus",
     "putty",
