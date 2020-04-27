@@ -27,7 +27,6 @@ $UserTools = @(
     "python",
     "ripgrep",
     "slack",
-    "starship",
     "sudo",
     "vscode",
     "wget",

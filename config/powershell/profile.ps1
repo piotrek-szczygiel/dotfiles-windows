@@ -45,6 +45,11 @@ function gc {
     git commit $args
 }
 
+Remove-Alias gca
+function gca {
+    git commit --all $args
+}
+
 Remove-Alias gam
 function gam {
     git commit --all --amend --no-edit $args
