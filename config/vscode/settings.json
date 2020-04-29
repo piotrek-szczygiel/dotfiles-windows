@@ -14,9 +14,12 @@
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
-    "terminal.external.windowsExec": "wt.exe",
-    "workbench.colorTheme": "Mayukai Mirage Gruvbox Darktooth",
+    "terminal.external.windowsExec": "%USERPROFILE%\\scoop\\apps\\windows-terminal\\current\\WindowsTerminal.exe",
+    "workbench.colorTheme": "Darktooth",
     "workbench.startupEditor": "readme",
     "workbench.tree.indent": 24,
-    "files.associations": { "*.svelte": "html" }
+    "files.associations": {
+        "*.svelte": "html"
+    },
+    "todo-tree.tree.showScanModeButton": false,
 }
