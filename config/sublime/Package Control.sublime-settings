@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"AceJump",
 		"Clang Format",
 		"EasyClangComplete",
 		"FileIcons Mono",
