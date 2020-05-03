@@ -1,0 +1,15 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Clang Format",
+		"EasyClangComplete",
+		"FileIcons Mono",
+		"Package Control",
+		"Witness color scheme",
+		"xmake"
+	]
+}

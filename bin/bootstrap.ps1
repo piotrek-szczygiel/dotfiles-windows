@@ -23,12 +23,12 @@ $UserTools = @(
     "keepassxc",
     "kitty",
     "netcat",
-    "notepadplusplus",
     "python",
     "ripgrep",
     "slack",
+    "sublime-merge",
+    "sublime-text",
     "sudo",
-    "vscode",
     "wget",
     "winmerge"
 )
