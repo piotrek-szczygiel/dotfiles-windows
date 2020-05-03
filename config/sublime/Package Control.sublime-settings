@@ -8,7 +8,9 @@
 		"Clang Format",
 		"EasyClangComplete",
 		"FileIcons Mono",
+		"GitGutter",
 		"Package Control",
+		"SideBarEnhancements",
 		"Witness color scheme",
 		"xmake"
 	]
