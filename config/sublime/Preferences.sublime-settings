@@ -23,6 +23,7 @@
 	"shift_tab_unindent": true,
 	"show_encoding": true,
 	"show_line_endings": true,
+	"sublime_merge_path": "C:\\Users\\Piotr\\scoop\\apps\\sublime-merge\\current\\sublime_merge.exe",
 	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
