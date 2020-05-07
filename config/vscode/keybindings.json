@@ -9,11 +9,8 @@
         "command": "workbench.action.terminal.new"
     },
     {
-        "key": "f9",
-        "command": "xmake.onBuild"
-    },
-    {
         "key": "f5",
-        "command": "xmake.onRun"
-    }
+        "command": "cmake.launchTarget",
+        "when": "!cmake:hideDebugCommand"
+    },
 ]

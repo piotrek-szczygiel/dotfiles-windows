@@ -26,9 +26,8 @@ $UserTools = @(
     "python",
     "ripgrep",
     "slack",
-    "sublime-merge",
-    "sublime-text",
     "sudo",
+    "vscode",
     "wget",
     "winmerge"
 )

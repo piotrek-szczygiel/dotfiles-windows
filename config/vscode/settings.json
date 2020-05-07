@@ -1,5 +1,6 @@
 {
     "breadcrumbs.enabled": false,
+    "cmake.revealLog": "never",
     "editor.cursorStyle": "block",
     "editor.folding": false,
     "editor.fontFamily": "Consolas NF",
@@ -12,13 +13,13 @@
     "editor.renderIndentGuides": false,
     "editor.renderLineHighlight": "none",
     "editor.renderWhitespace": "selection",
+    "editor.scrollbar.vertical": "hidden",
     "editor.semanticHighlighting.enabled": false,
     "editor.smoothScrolling": true,
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "deepIndent",
     "explorer.openEditors.visible": 0,
     "extensions.ignoreRecommendations": true,
-    "files.associations": { "*.svelte": "html" },
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "latex-workshop.view.pdf.viewer": "browser",
@@ -26,17 +27,25 @@
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
-    "terminal.external.windowsExec": "%USERPROFILE%\\scoop\\apps\\windows-terminal\\current\\WindowsTerminal.exe",
+    "terminal.external.windowsExec": "wt.exe",
+    "window.menuBarVisibility": "toggle",
+    "window.titleBarStyle": "native",
     "workbench.activityBar.visible": false,
-    "workbench.colorTheme": "Monochrome Dark",
+    "workbench.colorTheme": "Naysayer88",
+    "workbench.editor.enablePreview": false,
     "workbench.editor.showIcons": false,
-    "workbench.editor.showTabs": true,
+    "workbench.editor.tabSizing": "shrink",
     "workbench.iconTheme": "vs-minimal",
+    "workbench.startupEditor": "none",
+    "workbench.tips.enabled": false,
     "workbench.tree.indent": 24,
     "editor.quickSuggestions": {
         "other": false,
         "comments": false,
         "strings": false
+    },
+    "files.associations": {
+        "*.svelte": "html"
     },
     "[markdown]": {
         "files.trimTrailingWhitespace": false
