@@ -1,16 +1,20 @@
 // Place your key bindings in this file to override the defaults
 [
     {
-        "key": "ctrl+oem_7",
+        "key": "ctrl+'",
         "command": "workbench.action.terminal.toggleTerminal"
     },
     {
-        "key": "ctrl+shift+oem_7",
+        "key": "ctrl+shift+'",
         "command": "workbench.action.terminal.new"
     },
     {
         "key": "f5",
         "command": "cmake.launchTarget",
         "when": "!cmake:hideDebugCommand"
+    },
+    {
+        "key": "ctrl+;",
+        "command": "findJump.activate"
     },
 ]
