@@ -23,6 +23,7 @@ $UserTools = @(
     "keepassxc",
     "kitty",
     "netcat",
+    "notepadplusplus",
     "python",
     "ripgrep",
     "slack",
