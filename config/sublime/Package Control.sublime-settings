@@ -6,14 +6,11 @@
 	"installed_packages":
 	[
 		"AceJump",
-		"Clang Format",
-		"EasyClangComplete",
 		"FileIcons Mono",
 		"GitGutter",
 		"Package Control",
 		"SideBarEnhancements",
 		"Terminal",
-		"Witness color scheme",
-		"xmake"
+		"Witness color scheme"
 	]
 }
