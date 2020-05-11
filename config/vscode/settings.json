@@ -28,7 +28,7 @@
     "window.menuBarVisibility": "toggle",
     "window.titleBarStyle": "native",
     "workbench.activityBar.visible": false,
-    "workbench.colorTheme": "Noctis Lux",
+    "workbench.colorTheme": "Noctis",
     "workbench.editor.enablePreview": false,
     "workbench.editor.tabSizing": "shrink",
     "workbench.iconTheme": "file-icons",
