@@ -5,6 +5,9 @@
     whitespace = warn
 [core]
     autocrlf = input
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
 [url "git@github.com:"]
     insteadOf = "gh:"
     pushInsteadOf = "github:"
