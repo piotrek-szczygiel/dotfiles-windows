@@ -20,6 +20,7 @@ $UserTools = @(
     "fd",
     "freecommander",
     "keepassxc",
+    "lazygit",
     "netcat",
     "notepadplusplus",
     "python",
