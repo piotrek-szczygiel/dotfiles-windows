@@ -30,8 +30,7 @@
             // Put settings here that you want to apply to all profiles.
             "cursorShape": "vintage",
             "fontFace": "Consolas NF",
-            "startingDirectory": ".",
-            "colorScheme": "One Half Dark"
+            "startingDirectory": "."
         },
         "list":
         [

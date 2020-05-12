@@ -54,6 +54,11 @@ function ll {
     ls.exe --color=auto -la $args
 }
 
+Remove-Alias lg
+function lg {
+    lazygit.exe $args
+}
+
 Remove-Alias ga
 function ga {
     git add $args
