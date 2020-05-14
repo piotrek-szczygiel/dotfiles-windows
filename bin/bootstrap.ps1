@@ -28,8 +28,7 @@ $UserTools = @(
     "slack",
     "sudo",
     "vscode",
-    "wget",
-    "winmerge"
+    "wget"
 )
 
 Write-Host "Installing scoop tools" -ForegroundColor Cyan
