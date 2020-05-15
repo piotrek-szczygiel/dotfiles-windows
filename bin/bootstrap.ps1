@@ -2,7 +2,7 @@ $CloneUrl = "https://github.com/piotrek-szczygiel/dotfiles-windows"
 $PushUrl = "git@github.com:piotrek-szczygiel/dotfiles-windows"
 $Destination = "$env:USERPROFILE\dotfiles"
 
-if (-Not (Get-Command scoop)) {
+if (-Not (Get-Command scoop) | Out-Null) {
     Write-Host "Installing scoop" -ForegroundColor Cyan
     Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://get.scoop.sh")
 }
@@ -18,7 +18,6 @@ $UserTools = @(
     "discord",
     "everything",
     "fd",
-    "freecommander",
     "keepassxc",
     "lazygit",
     "netcat",
