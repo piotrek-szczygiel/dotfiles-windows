@@ -29,7 +29,7 @@
         {
             // Put settings here that you want to apply to all profiles.
             "cursorShape": "vintage",
-            "fontFace": "Consolas NF",
+            "fontFace": "Consolas",
             "startingDirectory": "."
         },
         "list":

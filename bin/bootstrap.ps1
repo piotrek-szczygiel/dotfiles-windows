@@ -53,10 +53,6 @@ Write-Host "Setting environment variables" -ForegroundColor Cyan
 [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
 [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
 
-Write-Host "Setting keyboard repeat speed and delay" -ForegroundColor Cyan
-Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardSpeed" 31
-Set-ItemProperty "HKCU:\Control Panel\Keyboard" "KeyboardDelay" 0
-
 Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
 sudo cmd /c "%DOTFILES%\bin\link-all.bat"
 
