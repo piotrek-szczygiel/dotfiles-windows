@@ -53,12 +53,18 @@ Write-Host "Setting environment variables" -ForegroundColor Cyan
 [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
 
 Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
-sudo cmd /c "%DOTFILES%\bin\link-all.bat"
+sudo cmd /c "$Destination\bin\link-all.bat"
 
 Write-Host "Installing PowerShell modules"
 Install-Module Jump.Location -Scope CurrentUser -Force
 
-Write-Host "Add to PATH: $Destination\bin" -ForegroundColor Cyan
-Write-Host "Add to PATH: $env:USERPROFILE\OneDrive\Windows" -ForegroundColor Cyan
+Write-Host "Enabling WSL" -ForegroundColor Cyan
+sudo dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+sudo dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+Write-Host "Add these directories to PATH manually:" -ForegroundColor Cyan
+Write-Host "    $Destination\bin"
+Write-Host "    $env:USERPROFILE\OneDrive\Windows"
+Write-Host
 
 Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
