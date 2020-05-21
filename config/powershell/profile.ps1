@@ -59,6 +59,11 @@ function lg {
     lazygit.exe $args
 }
 
+Remove-Alias linux
+function linux {
+    run.exe wsl.exe xfce4-terminal
+}
+
 Remove-Alias ga
 function ga {
     git add $args

@@ -28,9 +28,10 @@
         "defaults":
         {
             // Put settings here that you want to apply to all profiles.
-            "cursorShape": "vintage",
-            "fontFace": "Consolas",
-            "startingDirectory": "."
+            "startingDirectory": ".",
+            "colorScheme": "One Half Dark",
+            "useAcrylic": true,
+            "acrylicOpacity": 0.8
         },
         "list":
         [
@@ -58,6 +59,12 @@
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
                 "name": "Ubuntu",
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
+                "hidden": false,
+                "name": "Arch",
                 "source": "Windows.Terminal.Wsl"
             }
         ]
