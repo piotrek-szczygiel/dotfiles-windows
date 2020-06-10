@@ -12,16 +12,21 @@ scoop bucket add extras
 
 $UserTools = @(
     "7zip",
+    "archwsl",
     "autohotkey",
     "bat",
     "coreutils",
     "discord",
     "everything",
     "fd",
-    "keepassxc",
-    "lazygit",
+    "firefox",
+    "kitty",
+    "latex",
+    "mpv",
     "netcat",
+    "nodejs-lts",
     "notepadplusplus",
+    "paint.net",
     "python",
     "ripgrep",
     "slack",
@@ -34,6 +39,8 @@ Write-Host "Installing scoop tools" -ForegroundColor Cyan
 foreach ($Tool in $UserTools) {
     scoop install $Tool
 }
+
+scoop hold archwsl
 
 if (Test-Path "$Destination" -PathType Container) {
     Write-Host "Updating existing dotfiles" -ForegroundColor Cyan
@@ -66,5 +73,7 @@ Write-Host "Add these directories to PATH manually:" -ForegroundColor Cyan
 Write-Host "    $Destination\bin"
 Write-Host "    $env:USERPROFILE\OneDrive\Windows"
 Write-Host
+
+Write-Host "wsl --set-default-version 2"
 
 Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
