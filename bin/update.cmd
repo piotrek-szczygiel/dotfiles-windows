@@ -1,1 +1,2 @@
+@scoop update
 @scoop update *

@@ -1,6 +1,5 @@
 {
     "breadcrumbs.enabled": false,
-    "cmake.revealLog": "never",
     "editor.cursorStyle": "block",
     "editor.folding": false,
     "editor.fontFamily": "Consolas",
