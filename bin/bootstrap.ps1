@@ -20,7 +20,6 @@ $UserTools = @(
     "everything",
     "fd",
     "firefox",
-    "jetbrains-toolbox",
     "kitty",
     "latex",
     "mpv",
