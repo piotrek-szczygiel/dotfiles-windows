@@ -1,2 +1,3 @@
-@scoop update
-@scoop update *
+@echo off
+scoop update
+scoop update *
