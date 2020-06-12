@@ -1,6 +1,7 @@
 {
     "breadcrumbs.enabled": false,
     "editor.cursorStyle": "block",
+    "editor.dragAndDrop": false,
     "editor.folding": false,
     "editor.fontFamily": "Consolas",
     "editor.fontSize": 16,
