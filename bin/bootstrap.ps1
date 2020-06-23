@@ -27,6 +27,7 @@ $UserTools = @(
     "nodejs-lts",
     "notepadplusplus",
     "paint.net",
+    "perl",
     "powertoys",
     "python",
     "ripgrep",
