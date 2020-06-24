@@ -15,6 +15,7 @@ $UserTools = @(
     "archwsl",
     "autohotkey",
     "bat",
+    "bitwarden",
     "coreutils",
     "discord",
     "everything",
