@@ -6,12 +6,10 @@
     "editor.fontFamily": "Consolas",
     "editor.fontSize": 16,
     "editor.glyphMargin": false,
-    "editor.lineNumbers": "off",
     "editor.minimap.enabled": false,
     "editor.renderIndentGuides": false,
     "editor.renderLineHighlight": "none",
     "editor.renderWhitespace": "selection",
-    "editor.scrollbar.vertical": "hidden",
     "editor.smoothScrolling": true,
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "deepIndent",
@@ -37,14 +35,6 @@
     "workbench.startupEditor": "none",
     "workbench.tips.enabled": false,
     "workbench.tree.indent": 24,
-    "editor.quickSuggestions": {
-        "other": false,
-        "comments": false,
-        "strings": false
-    },
-    "files.associations": {
-        "*.svelte": "html"
-    },
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     },
