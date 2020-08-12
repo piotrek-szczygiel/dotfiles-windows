@@ -23,7 +23,6 @@ $UserTools = @(
     "firefox",
     "kitty",
     "latex",
-    "mpv",
     "netcat",
     "nodejs-lts",
     "notepadplusplus",
@@ -34,6 +33,7 @@ $UserTools = @(
     "ripgrep",
     "slack",
     "sudo",
+    "vlc",
     "vscode",
     "wget"
 )
