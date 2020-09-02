@@ -18,7 +18,6 @@ $UserTools = @(
     "bitwarden",
     "coreutils",
     "discord",
-    "everything",
     "fd",
     "firefox",
     "kitty",
