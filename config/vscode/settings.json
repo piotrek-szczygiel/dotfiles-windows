@@ -1,5 +1,4 @@
 {
-    "breadcrumbs.enabled": false,
     "editor.cursorStyle": "block",
     "editor.dragAndDrop": false,
     "editor.folding": false,
@@ -16,8 +15,6 @@
     "explorer.openEditors.visible": 0,
     "extensions.ignoreRecommendations": true,
     "files.hotExit": "off",
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
     "latex-workshop.view.pdf.viewer": "browser",
     "python.formatting.provider": "black",
     "python.linting.enabled": true,
