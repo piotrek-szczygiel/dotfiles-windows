@@ -13,6 +13,7 @@ scoop bucket add extras
 $UserTools = @(
     "7zip",
     "archwsl",
+    "aria2",
     "autohotkey",
     "bat",
     "bitwarden",
