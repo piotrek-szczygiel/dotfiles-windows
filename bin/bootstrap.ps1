@@ -15,13 +15,11 @@ $UserTools = @(
     "Discord.Discord",
     "gerardog.gsudo",
     "Git.Git",
-    "GnuWin32.Wget",
     "Microsoft.PowerToys",
     "Microsoft.VisualStudioCode-User-x64",
     "Microsoft.WindowsTerminal",
     "Notepad++.Notepad++",
     "Python.Python",
-    "Spotify.Spotify",
     "Telegram.TelegramDesktop",
     "vim.vim",
     "voidtools.Everything",
@@ -34,11 +32,14 @@ foreach ($Tool in $UserTools) {
     winget install --silent --exact --id="$Tool"
 }
 
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+
 if (Test-Path "$Destination" -PathType Container) {
     Write-Host "Updating existing dotfiles" -ForegroundColor Cyan
     Set-Location -Path "$Destination"
     git pull
-} else {
+}
+else {
     Write-Host "Downloading dotfiles" -ForegroundColor Cyan
     git clone "$CloneUrl" "$Destination"
     Set-Location -Path "$Destination"
@@ -61,6 +62,6 @@ Write-Host "Enabling WSL" -ForegroundColor Cyan
 gsudo --wait dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 gsudo --wait dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
-Write-Host "wsl --set-default-version 2"
-
 Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
+Write-Host "Remember to execute after rebooting"
+Write-Host "    wsl --set-default-version 2" -ForegroundColor Yellow
