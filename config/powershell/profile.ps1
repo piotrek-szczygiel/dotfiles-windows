@@ -39,31 +39,6 @@ function ex {
     explorer.exe .
 }
 
-Remove-Alias npp
-function npp {
-    notepad++.exe $args
-}
-
-Remove-Alias l
-function l {
-    ls.exe --color=auto $args
-}
-
-Remove-Alias ll
-function ll {
-    ls.exe --color=auto -la $args
-}
-
-Remove-Alias lg
-function lg {
-    lazygit.exe $args
-}
-
-Remove-Alias linux
-function linux {
-    run.exe wsl.exe xfce4-terminal
-}
-
 Remove-Alias ga
 function ga {
     git add $args

@@ -2,46 +2,37 @@ $CloneUrl = "https://github.com/piotrek-szczygiel/dotfiles-windows"
 $PushUrl = "git@github.com:piotrek-szczygiel/dotfiles-windows"
 $Destination = "$env:USERPROFILE\dotfiles"
 
-if (-Not (Get-Command scoop)) {
-    Write-Host "Installing scoop" -ForegroundColor Cyan
-    Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://get.scoop.sh")
+if (-Not (Get-Command winget)) {
+    Write-Host "Install winget from https://github.com/microsoft/winget-cli/releases" -ForegroundColor Red
+    exit 1
 }
-
-scoop install git
-scoop bucket add extras
 
 $UserTools = @(
-    "7zip",
-    "archwsl",
-    "bat",
-    "bitwarden",
-    "coreutils",
-    "discord",
-    "fd",
-    "firefox",
-    "kitty",
-    "latex",
-    "netcat",
-    "nodejs-lts",
-    "notepadplusplus",
-    "paint.net",
-    "perl",
-    "powertoys",
-    "python",
-    "ripgrep",
-    "slack",
-    "sudo",
-    "vlc",
-    "vscode",
-    "wget"
+    "7zip.7zip",
+    "Amazon.Corretto",
+    "Atlassian.Sourcetree",
+    "CrystalRich.LockHunter",
+    "Discord.Discord",
+    "gerardog.gsudo",
+    "Git.Git",
+    "GnuWin32.Wget",
+    "Microsoft.PowerToys",
+    "Microsoft.VisualStudioCode-User-x64",
+    "Microsoft.WindowsTerminal",
+    "Notepad++.Notepad++",
+    "Python.Python",
+    "Spotify.Spotify",
+    "Telegram.TelegramDesktop",
+    "vim.vim",
+    "voidtools.Everything",
+    "WinDirStat.WinDirStat",
+    "WinSCP.WinSCP"
 )
 
-Write-Host "Installing scoop tools" -ForegroundColor Cyan
+Write-Host "Installing applications using winget" -ForegroundColor Cyan
 foreach ($Tool in $UserTools) {
-    scoop install $Tool
+    winget install --silent --exact --id="$Tool"
 }
-
-scoop hold archwsl
 
 if (Test-Path "$Destination" -PathType Container) {
     Write-Host "Updating existing dotfiles" -ForegroundColor Cyan
@@ -61,19 +52,14 @@ Write-Host "Setting environment variables" -ForegroundColor Cyan
 [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
 
 Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
-sudo cmd /c "$Destination\bin\link-all.bat"
+gsudo --wait cmd /c "$Destination\bin\link-all.bat"
 
 Write-Host "Installing PowerShell modules"
 Install-Module Jump.Location -Scope CurrentUser -Force
 
 Write-Host "Enabling WSL" -ForegroundColor Cyan
-sudo dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-sudo dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-
-Write-Host "Add these directories to PATH manually:" -ForegroundColor Cyan
-Write-Host "    $Destination\bin"
-Write-Host "    $env:USERPROFILE\OneDrive\Windows"
-Write-Host
+gsudo --wait dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+gsudo --wait dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
 Write-Host "wsl --set-default-version 2"
 

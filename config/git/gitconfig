@@ -5,18 +5,12 @@
 	whitespace = warn
 [core]
 	autocrlf = input
-	editor = nvim
+	editor = vim
 [url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"
 	pushInsteadOf = "git://github.com/"
 [push]
 	default = simple
-[pull]
-	rebase = true
-[merge]
-	tool = smerge
 [credential]
 	helper = manager
-[includeIf "gitdir/i:C:/ibm/"]
-	path = .gitconfig-ibm
