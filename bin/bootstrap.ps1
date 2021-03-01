@@ -21,7 +21,6 @@ $UserTools = @(
     "Notepad++.Notepad++",
     "Python.Python",
     "Telegram.TelegramDesktop",
-    "vim.vim",
     "voidtools.Everything",
     "WinDirStat.WinDirStat",
     "WinSCP.WinSCP"
