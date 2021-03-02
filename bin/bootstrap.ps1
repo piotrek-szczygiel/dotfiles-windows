@@ -10,9 +10,9 @@ if (-Not (Get-Command winget)) {
 $UserTools = @(
     "7zip.7zip",
     "Amazon.Corretto",
-    "Atlassian.Sourcetree",
     "CrystalRich.LockHunter",
     "Discord.Discord",
+    "Fork.Fork",
     "gerardog.gsudo",
     "Git.Git",
     "Microsoft.PowerToys",

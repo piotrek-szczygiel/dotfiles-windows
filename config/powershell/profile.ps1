@@ -1,4 +1,4 @@
-﻿Import-Module Jump.Location
+Import-Module Jump.Location
 
 function global:prompt {
     "$($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) ";
@@ -23,7 +23,7 @@ function optimize {
     $ngen_application_path = (Get-ChildItem -Path $ngen_path -Filter "ngen.exe" -Recurse | Where-Object {$_.Length -gt 0} | Select-Object -Last 1).Fullname
 
     Set-Alias -Name ngen -Value $ngen_application_path
-    [System.AppDomain]::CurrentDomain.GetAssemblies() | foreach { ngen install $_.Location /nologo /verbose }
+    [System.AppDomain]::CurrentDomain.GetAssemblies() | ForEach-Object { ngen install $_.Location /nologo /verbose }
 
     Write-Host "Optimization finished!" -ForegroundColor Green
 }
