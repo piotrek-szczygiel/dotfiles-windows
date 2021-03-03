@@ -54,8 +54,12 @@ Write-Host "Setting environment variables" -ForegroundColor Cyan
 Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
 gsudo --wait cmd /c "$Destination\bin\link-all.bat"
 
-Write-Host "Installing PowerShell modules"
+Write-Host "Installing PowerShell modules" -ForegroundColor Cyan
 Install-Module Jump.Location -Scope CurrentUser -Force
+
+Write-Host "Enabling SSH Agent" -ForegroundColor Cyan
+Start-Service ssh-agent
+Set-Service -StartupType Automatic ssh-agent
 
 Write-Host "Enabling WSL" -ForegroundColor Cyan
 gsudo --wait dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
