@@ -29,9 +29,10 @@ $ChocolateyPackages = @(
     "windirstat"
 )
 
-$PackagesInline = [system.String]::Join(" ", $ChocolateyPackages)
 Write-Host "Installing applications using chocolatey" -ForegroundColor Cyan
-choco install $PackagesInline --yes
+foreach ($Package in $ChocolateyPackages) {
+    choco install $Package --yes
+}
 
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
