@@ -2,36 +2,38 @@ $CloneUrl = "https://github.com/piotrek-szczygiel/dotfiles-windows"
 $PushUrl = "git@github.com:piotrek-szczygiel/dotfiles-windows"
 $Destination = "$env:USERPROFILE\dotfiles"
 
-if (-Not (Get-Command winget)) {
-    Write-Host "Install winget from https://github.com/microsoft/winget-cli/releases" -ForegroundColor Red
-    exit 1
+Set-ExecutionPolicy Bypass -Scope Process -Force
+
+if (-Not (Get-Command choco.exe)) {
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+}
+else {
+    choco upgrade chocolatey
 }
 
-$UserTools = @(
-    "7zip.7zip",
-    "Amazon.Corretto",
-    "CrystalRich.LockHunter",
-    "Discord.Discord",
-    "Fork.Fork",
-    "gerardog.gsudo",
-    "Git.Git",
-    "Microsoft.PowerToys",
-    "Microsoft.VisualStudioCode-User-x64",
-    "Microsoft.WindowsTerminal",
-    "Notepad++.Notepad++",
-    "Python.Python",
-    "Telegram.TelegramDesktop",
-    "voidtools.Everything",
-    "WinDirStat.WinDirStat",
-    "WinSCP.WinSCP"
+$ChocolateyPackages = @(
+    "7zip",
+    "correttojdk",
+    "discord",
+    "everything",
+    "git",
+    "gsudo",
+    "lockhunter",
+    "microsoft-windows-terminal",
+    "notepadplusplus",
+    "powertoys",
+    "python",
+    "telegram",
+    "totalcommander",
+    "vlc",
+    "vscode",
+    "windirstat"
 )
 
-Write-Host "Installing applications using winget" -ForegroundColor Cyan
-foreach ($Tool in $UserTools) {
-    winget install --silent --exact --id="$Tool"
-}
+Write-Host "Installing applications using chocolatey" -ForegroundColor Cyan
+choco install [system.String]::Join(" ", $ChocolateyPackages) --yes
 
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
 if (Test-Path "$Destination" -PathType Container) {
     Write-Host "Updating existing dotfiles" -ForegroundColor Cyan
