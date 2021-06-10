@@ -68,7 +68,8 @@ gsudo --wait dism.exe /online /enable-feature /featurename:Microsoft-Windows-Sub
 gsudo --wait dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
 Write-Host "Downloading Plugin Manager for Neovim"
-Invoke-WebRequest -useb "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" | New-Item "$HOME/vimfiles/autoload/plug.vim" -Force
+Invoke-WebRequest -useb "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" |`
+    New-Item "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
 
 Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
 Write-Host "Download clink from https://github.com/chrisant996/clink/releases"
