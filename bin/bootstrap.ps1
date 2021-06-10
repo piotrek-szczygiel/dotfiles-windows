@@ -19,6 +19,7 @@ $ChocolateyPackages = @(
     "gsudo",
     "lockhunter",
     "microsoft-windows-terminal",
+    "neovim",
     "notepadplusplus",
     "powertoys",
     "python",
@@ -65,6 +66,9 @@ Set-Service -StartupType Automatic ssh-agent
 Write-Host "Enabling WSL" -ForegroundColor Cyan
 gsudo --wait dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 gsudo --wait dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+Write-Host "Downloading Plugin Manager for Neovim"
+Invoke-WebRequest -useb "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" | New-Item "$HOME/vimfiles/autoload/plug.vim" -Force
 
 Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
 Write-Host "Download clink from https://github.com/chrisant996/clink/releases"
