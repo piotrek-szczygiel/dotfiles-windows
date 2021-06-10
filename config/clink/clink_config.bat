@@ -7,6 +7,7 @@ doskey l=lsd $*
 doskey ls=lsd $*
 doskey ll=lsd -l $*
 doskey la=lsd -la $*
+doskey sudo=gsudo --wait $*
 doskey zf=z -I $*
 
 doskey ga=git add $*
