@@ -53,12 +53,10 @@ Write-Host "Setting environment variables" -ForegroundColor Cyan
 [Environment]::SetEnvironmentVariable("dotfiles", "$Destination", "User")
 [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
 [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
+[Environment]::SetEnvironmentVariable("FZF_DEFAULT_OPTS", "--height 40%", "User")
 
 Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
 gsudo --wait cmd /c "$Destination\bin\link-all.bat"
-
-Write-Host "Installing PowerShell modules" -ForegroundColor Cyan
-Install-Module Jump.Location -Scope CurrentUser -Force
 
 Write-Host "Enabling SSH Agent" -ForegroundColor Cyan
 Start-Service ssh-agent
@@ -69,5 +67,7 @@ gsudo --wait dism.exe /online /enable-feature /featurename:Microsoft-Windows-Sub
 gsudo --wait dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
 Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
+Write-Host "Download clink from https://github.com/chrisant996/clink/releases"
+Write-Host ""
 Write-Host "Remember to execute after rebooting"
 Write-Host "    wsl --set-default-version 2" -ForegroundColor Yellow

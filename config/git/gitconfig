@@ -5,7 +5,7 @@
 	whitespace = warn
 [core]
 	autocrlf = input
-	editor = vim
+	editor = nvim
 [url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"
