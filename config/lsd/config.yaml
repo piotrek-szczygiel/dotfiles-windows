@@ -58,6 +58,7 @@ icons:
 # A list of globs to ignore when listing.
 ignore-globs:
   - System Volume Information
+  - $RECYCLE.BIN
 
 # == Indicators ==
 # Whether to add indicator characters to certain listed files.

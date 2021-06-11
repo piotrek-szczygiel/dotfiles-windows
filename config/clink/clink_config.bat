@@ -10,6 +10,13 @@ doskey la=lsd -la $*
 doskey sudo=gsudo --wait $*
 doskey zf=z -I $*
 
+doskey nvimfd=powershell -c "nvim $(fd --type f . | fzf)"
+doskey nvimrg=rg --column --line-number --no-heading --smart-case --color=always . $b fzf $b powershell -c "$a=$(Read-Host);if([string]::IsNullOrEmpty($a)){exit};$a=$a.split(':')[0..2];if($a.Length -ne 3){exit};$c=[string]::Format('nvim \"+call cursor({0}, {1})\" {2}', $a[1], $a[2], $a[0]);iex $c"
+
+doskey codefd=powershell -c "code $(fd --type f . | fzf)"
+doskey coderg=rg --column --line-number --no-heading --smart-case --color=always . $b fzf $b powershell -c "$a=$(Read-Host);if([string]::IsNullOrEmpty($a)){exit};$a=$a.split(':')[0..2];if($a.Length -ne 3){exit};$c=[string]::Format('code --goto \"{0}\"', $a -Join ':');iex $c"
+
+
 doskey ga=git add $*
 doskey gus=git restore --staged $*
 doskey gc=git commit $*
