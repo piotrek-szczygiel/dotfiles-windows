@@ -12,6 +12,7 @@ else {
 
 $ChocolateyPackages = @(
     "7zip",
+    "bat",
     "clink-maintained --version 1.2.12",
     "correttojdk",
     "delta",

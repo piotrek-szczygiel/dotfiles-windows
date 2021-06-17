@@ -1,7 +1,9 @@
 @echo off
 
-doskey e=explorer.exe "%%cd%%"
-doskey t=totalcmd.exe /o "%%cd%%"
+doskey e=explorer "%%cd%%"
+doskey t=totalcmd /o "%%cd%%"
+
+doskey cat=bat $*
 
 doskey l=lsd $*
 doskey ls=lsd $*
