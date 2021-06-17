@@ -12,14 +12,17 @@ else {
 
 $ChocolateyPackages = @(
     "7zip",
+    "clink-maintained --version 1.2.12",
     "correttojdk",
     "delta",
     "discord",
+    "dust",
     "everything",
     "fd",
     "fzf",
     "git",
     "gsudo",
+    "jq",
     "lockhunter",
     "lsd",
     "lua",
