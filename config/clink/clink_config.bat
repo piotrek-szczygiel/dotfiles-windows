@@ -4,6 +4,7 @@ doskey e=explorer "%%cd%%"
 doskey t=totalcmd /o "%%cd%%"
 
 doskey cat=bat $*
+doskey catp=bat --paging=never -p $*
 
 doskey l=lsd $*
 doskey ls=lsd $*
