@@ -8,7 +8,7 @@
 	"font_size": 13,
 	"highlight_line": true,
 	"hot_exit": "disabled",
-	"indent_guide_options": ["draw_active_single", "solid"],
+	"indent_guide_options": ["draw_normal", "draw_active_single", "solid"],
 	"save_on_focus_lost": true,
 	"theme": "Monokai Pro (Filter Spectrum).sublime-theme",
 	"trim_trailing_white_space_on_save": "all",

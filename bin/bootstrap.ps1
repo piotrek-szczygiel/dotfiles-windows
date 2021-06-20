@@ -4,6 +4,10 @@ $Destination = "$env:USERPROFILE\dotfiles"
 
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
+function Add-To-Path($Path) {
+    [Environment]::SetEnvironmentVariable("Path", [System.Environment]::GetEnvironmentVariable("Path", "User") + ";" + $Path, "User")
+}
+
 function Run-Bootstrap {
     if (-Not (Get-Command winget 2> $null)) {
         Write-Host "Unable to launch winget!" -ForegroundColor Red
@@ -93,7 +97,12 @@ function Run-Bootstrap {
     [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
     [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
     [Environment]::SetEnvironmentVariable("FZF_DEFAULT_OPTS", "--height 40% --ansi", "User")
-    [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\totalcmd;$env:USERPROFILE\OneDrive\Windows\bin;$env:LOCALAPPDATA\clink;C:\Program Files\Sublime Text", "User")
+
+    Add-To-Path "C:\Program Files\totalcmd"
+    Add-To-Path "$env:USERPROFILE\OneDrive\Windows\bin"
+    Add-To-Path "$env:LOCALAPPDATA\clink"
+    Add-To-Path "C:\Program Files\Sublime Text"
+    Add-To-Path "C:\Program Files\Sublime Merge"
 
     Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
     gsudo --wait cmd /c "$Destination\bin\link-all.bat"
