@@ -92,7 +92,7 @@ function Run-Bootstrap {
     [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
     [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
     [Environment]::SetEnvironmentVariable("FZF_DEFAULT_OPTS", "--height 40% --ansi", "User")
-    [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\totalcmd;$env:USERPROFILE\OneDrive\Windows\bin;$env:LOCALAPPDATA\clink", "User")
+    [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\totalcmd;$env:USERPROFILE\OneDrive\Windows\bin;$env:LOCALAPPDATA\clink;C:\Program Files\Sublime Text", "User")
 
     Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
     gsudo --wait cmd /c "$Destination\bin\link-all.bat"
