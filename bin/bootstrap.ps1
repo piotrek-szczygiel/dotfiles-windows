@@ -2,8 +2,6 @@ $CloneUrl = "https://github.com/piotrek-szczygiel/dotfiles-windows"
 $PushUrl = "git@github.com:piotrek-szczygiel/dotfiles-windows"
 $Destination = "$env:USERPROFILE\dotfiles"
 
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
 if (-Not (Get-Command winget)) {
