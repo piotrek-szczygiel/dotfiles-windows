@@ -14,7 +14,7 @@ doskey sudo=gsudo --wait $*
 doskey zf=z -I $*
 
 doskey md=mkdir ""$*"" $T cd ""$*""
-doskey vs="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
+doskey vs="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
 
 doskey nvimfd=powershell -c "nvim $(fd --type f . | fzf)"
 doskey nvimrg=rg --column --line-number --no-heading --smart-case --color=always . $b fzf $b powershell -c "$a=$(Read-Host);if([string]::IsNullOrEmpty($a)){exit};$a=$a.split(':')[0..2];if($a.Length -ne 3){exit};$c=[string]::Format('nvim \"+call cursor({0}, {1})\" {2}', $a[1], $a[2], $a[0]);iex $c"

@@ -61,6 +61,7 @@ function Run-Bootstrap {
         "lsd",
         "lua",
         "neovim",
+        "ninja",
         "python",
         "ripgrep",
         "tokei"
