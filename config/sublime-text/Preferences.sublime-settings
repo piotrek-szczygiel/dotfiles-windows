@@ -1,16 +1,16 @@
 {
 	"block_caret": true,
 	"caret_style": "blink",
-	"color_scheme": "Packages/Witness color scheme/Witness.sublime-color-scheme",
-	"draw_white_space": ["selection", "trailing", "isolated", "leading_mixed", "mixed_tabs"],
+	"color_scheme": "Monokai Pro (Filter Spectrum).sublime-color-scheme",
+	"draw_white_space": ["selection", "trailing", "isolated", "all_tabs"],
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Consolas NF",
-	"font_size": 14,
+	"font_size": 13,
+	"highlight_line": true,
 	"hot_exit": "disabled",
 	"indent_guide_options": ["draw_active_single", "solid"],
-	"line_numbers": false,
 	"save_on_focus_lost": true,
-	"theme": "Adaptive.sublime-theme",
+	"theme": "Monokai Pro (Filter Spectrum).sublime-theme",
 	"trim_trailing_white_space_on_save": "all",
-	"ignored_packages": ["Vintage"]
+	"ignored_packages": ["Markdown", "Vintage"],
 }

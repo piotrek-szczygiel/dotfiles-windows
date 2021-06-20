@@ -5,7 +5,13 @@
 	],
 	"installed_packages":
 	[
+		"GitGutter",
+		"INI",
+		"MarkdownEditing",
 		"Package Control",
-		"Witness color scheme",
+		"PowerShell",
+		"SideBarEnhancements",
+		"Terminal",
+		"Theme - Monokai Pro",
 	],
 }
