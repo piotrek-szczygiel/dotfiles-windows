@@ -102,6 +102,9 @@ Write-Host "Enabling WSL" -ForegroundColor Cyan
 gsudo --wait dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 gsudo --wait dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
+Write-Host "Enabling clink autostart" -ForegroundColor Cyan
+clink autorun install
+
 Write-Host "Downloading Plugin Manager for Neovim"
 Invoke-WebRequest -useb "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" |`
     New-Item "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
@@ -110,7 +113,6 @@ Write-Host "Installing plugins for Neovim"
 nvim +PlugInstall +qall
 
 Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
-Write-Host "clink autorun install - use clink"
 Write-Host ""
 Write-Host "Remember to execute after rebooting"
 Write-Host "    wsl --set-default-version 2" -ForegroundColor Yellow
