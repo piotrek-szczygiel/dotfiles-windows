@@ -2,47 +2,71 @@ $CloneUrl = "https://github.com/piotrek-szczygiel/dotfiles-windows"
 $PushUrl = "git@github.com:piotrek-szczygiel/dotfiles-windows"
 $Destination = "$env:USERPROFILE\dotfiles"
 
-if (-Not (Get-Command choco.exe)) {
-    Set-ExecutionPolicy Bypass -Scope Process -Force
-    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-}
-else {
-    choco upgrade chocolatey
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+
+if (-Not (Get-Command winget)) {
+    Write-Host "Unable to launch winget!" -ForegroundColor Red
+    Write-Host "Install Windows Package Manager from https://github.com/microsoft/winget-cli/releases"
+    exit 1
 }
 
-$ChocolateyPackages = @(
-    "7zip",
+$WingetPackages = @(
+    "7zip.7zip",
+    "Azul.Zulu.16",
+    "CrystalRich.LockHunter",
+    "Discord.Discord",
+    "flux.flux",
+    "gerardog.gsudo",
+    "Ghisler.TotalCommander",
+    "Microsoft.PowerToys",
+    "Microsoft.VisualStudio.2019.BuildTools",
+    "Microsoft.VisualStudioCode",
+    "Microsoft.WindowsTerminal ",
+    "Notepad++.Notepad++",
+    "SublimeHQ.SublimeMerge",
+    "SublimeHQ.SublimeText.4",
+    "Telegram.TelegramDesktop",
+    "VideoLAN.VLC",
+    "voidtools.Everything",
+    "WinDirStat.WinDirStat"
+)
+
+Write-Host "Installing applications using winget" -ForegroundColor Cyan
+foreach ($Package in $WingetPackages) {
+    winget install --exact --silent --id=$Package
+}
+
+if (-Not (Get-Command scoop)) {
+    Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://get.scoop.sh")
+} else {
+    scoop update
+    scoop update *
+}
+
+$ScoopPackages = @(
     "bat",
-    "clink-maintained --version 1.2.12",
-    "correttojdk",
+    "clink",
+    "cmake",
     "delta",
-    "discord",
     "dust",
-    "everything",
     "fd",
     "fzf",
     "git",
-    "gsudo",
     "jq",
-    "lockhunter",
+    "less",
     "lsd",
     "lua",
     "neovim",
-    "notepadplusplus",
-    "npiperelay",
-    "powertoys",
     "python",
     "ripgrep",
-    "tokei",
-    "totalcommander",
-    "vlc",
-    "vscode",
-    "windirstat"
+    "tokei"
 )
 
-Write-Host "Installing applications using chocolatey" -ForegroundColor Cyan
-foreach ($Package in $ChocolateyPackages) {
-    choco install $Package --yes
+Write-Host "Installing scoop packages" -ForegroundColor Cyan
+foreach ($Package in $ScoopPackages) {
+    scoop install $Package
 }
 
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
@@ -65,7 +89,7 @@ Write-Host "Setting environment variables" -ForegroundColor Cyan
 [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
 [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
 [Environment]::SetEnvironmentVariable("FZF_DEFAULT_OPTS", "--height 40% --ansi", "User")
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\totalcmd;$env:USERPROFILE\OneDrive\Windows;%env:LOCALAPPDATA\clink", "User")
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\totalcmd;$env:USERPROFILE\OneDrive\Windows\bin;%env:LOCALAPPDATA\clink", "User")
 
 Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
 gsudo --wait cmd /c "$Destination\bin\link-all.bat"
@@ -86,7 +110,7 @@ Write-Host "Installing plugins for Neovim"
 nvim +PlugInstall +qall
 
 Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
-Write-Host "Download clink from https://github.com/chrisant996/clink/releases"
+Write-Host "clink autorun install - use clink"
 Write-Host ""
 Write-Host "Remember to execute after rebooting"
 Write-Host "    wsl --set-default-version 2" -ForegroundColor Yellow
