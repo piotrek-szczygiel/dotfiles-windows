@@ -5,9 +5,9 @@ $Destination = "$env:USERPROFILE\dotfiles"
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
 function Run-Bootstrap {
-    if (-Not (Get-Command winget)) {
+    if (-Not (Get-Command winget 2> $null)) {
         Write-Host "Unable to launch winget!" -ForegroundColor Red
-        Write-Host "Install Windows Package Manager from https://github.com/microsoft/winget-cli/releases"
+        Write-Host "Install Windows Package Manager from https://github.com/microsoft/winget-cli/releases" -ForegroundColor Yellow
         return
     }
 
@@ -22,7 +22,7 @@ function Run-Bootstrap {
         "Microsoft.PowerToys",
         "Microsoft.VisualStudio.2019.BuildTools",
         "Microsoft.VisualStudioCode",
-        "Microsoft.WindowsTerminal ",
+        "Microsoft.WindowsTerminal",
         "Notepad++.Notepad++",
         "SublimeHQ.SublimeMerge",
         "SublimeHQ.SublimeText.4",
@@ -34,12 +34,15 @@ function Run-Bootstrap {
 
     Write-Host "Installing applications using winget" -ForegroundColor Cyan
     foreach ($Package in $WingetPackages) {
+        Write-Host "Installing winget package $Package..." -ForegroundColor Yellow
         winget install --exact --silent --id=$Package
     }
 
-    if (-Not (Get-Command scoop)) {
+    if (-Not (Get-Command scoop 2> $null)) {
+        Write-Host "Installing scoop..." -ForegroundColor Cyan
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://get.scoop.sh")
     } else {
+        Write-Host "Scoop already installed. Updating..."
         scoop update
         scoop update *
     }
@@ -65,6 +68,7 @@ function Run-Bootstrap {
 
     Write-Host "Installing scoop packages" -ForegroundColor Cyan
     foreach ($Package in $ScoopPackages) {
+        Write-Host "Installing scoop package $Package..." -ForegroundColor Yellow
         scoop install $Package
     }
 
@@ -88,14 +92,14 @@ function Run-Bootstrap {
     [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
     [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
     [Environment]::SetEnvironmentVariable("FZF_DEFAULT_OPTS", "--height 40% --ansi", "User")
-    [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\totalcmd;$env:USERPROFILE\OneDrive\Windows\bin;%env:LOCALAPPDATA\clink", "User")
+    [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\totalcmd;$env:USERPROFILE\OneDrive\Windows\bin;$env:LOCALAPPDATA\clink", "User")
 
     Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
     gsudo --wait cmd /c "$Destination\bin\link-all.bat"
 
     Write-Host "Enabling SSH Agent" -ForegroundColor Cyan
-    Start-Service ssh-agent
     Set-Service -StartupType Automatic ssh-agent
+    Start-Service ssh-agent
 
     Write-Host "Enabling WSL" -ForegroundColor Cyan
     gsudo --wait dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
