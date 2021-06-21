@@ -30,8 +30,8 @@ function Run-Bootstrap {
         "Microsoft.WindowsTerminal",
         "Notepad++.Notepad++",
         "Rufus.Rufus",
-        "SublimeHQ.SublimeMerge",
-        "SublimeHQ.SublimeText.4",
+        "SublimeHQ.SublimeMerge --version 2056",
+        "SublimeHQ.SublimeText.4 --version 4.0.0.410700",
         "Telegram.TelegramDesktop",
         "VideoLAN.VLC",
         "voidtools.Everything",
@@ -41,7 +41,7 @@ function Run-Bootstrap {
     Write-Host "Installing applications using winget" -ForegroundColor Cyan
     foreach ($Package in $WingetPackages) {
         Write-Host "Installing winget package $Package..." -ForegroundColor Yellow
-        winget install --exact --silent --id=$Package
+        winget install --exact --silent --id $Package
     }
 
     if (-Not (Get-Command scoop 2> $null)) {
