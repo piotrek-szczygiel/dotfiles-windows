@@ -18,6 +18,7 @@ function Run-Bootstrap {
     $WingetPackages = @(
         "7zip.7zip",
         "Azul.Zulu.16",
+        "Canonical.Ubuntu",
         "CrystalRich.LockHunter",
         "Discord.Discord",
         "flux.flux",
@@ -28,6 +29,7 @@ function Run-Bootstrap {
         "Microsoft.VisualStudioCode",
         "Microsoft.WindowsTerminal",
         "Notepad++.Notepad++",
+        "Rufus.Rufus",
         "SublimeHQ.SublimeMerge",
         "SublimeHQ.SublimeText.4",
         "Telegram.TelegramDesktop",
@@ -127,6 +129,7 @@ function Run-Bootstrap {
 
     Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
     Write-Host ""
+    Write-Host "Install WSL2 Kernel from https://aka.ms/wsl2kernel"
     Write-Host "Remember to execute after rebooting"
     Write-Host "    wsl --set-default-version 2" -ForegroundColor Yellow
 }
