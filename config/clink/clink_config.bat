@@ -6,10 +6,10 @@ doskey t=totalcmd /o "%%cd%%"
 doskey cat=bat $*
 doskey catp=bat --paging=never -p $*
 
-doskey l=lsd $*
-doskey ls=lsd $*
-doskey ll=lsd -l $*
-doskey la=lsd -la $*
+doskey l=ls --color=always $*
+doskey ls=ls --color=always $*
+doskey ll=ls --color=always -l $*
+doskey la=ls --color=always -la $*
 doskey sudo=gsudo --wait $*
 doskey zf=z -I $*
 
@@ -21,7 +21,6 @@ doskey nvimrg=rg --column --line-number --no-heading --smart-case --color=always
 
 doskey codefd=powershell -c "code $(fd --type f . | fzf)"
 doskey coderg=rg --column --line-number --no-heading --smart-case --color=always . $b fzf $b powershell -c "$a=$(Read-Host);if([string]::IsNullOrEmpty($a)){exit};$a=$a.split(':')[0..2];if($a.Length -ne 3){exit};$c=[string]::Format('code --goto \"{0}\"', $a -Join ':');iex $c"
-
 
 doskey ga=git add $*
 doskey gus=git restore --staged $*
