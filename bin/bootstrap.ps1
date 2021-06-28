@@ -18,7 +18,6 @@ function Run-Bootstrap {
     $WingetPackages = @(
         "7zip.7zip",
         "Azul.Zulu.16",
-        #"Canonical.Ubuntu",
         "Discord.Discord",
         "flux.flux",
         "gerardog.gsudo",
