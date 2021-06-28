@@ -2,6 +2,9 @@
 	email = szczygiel.p@gmail.com
 	name = Piotr Szczygieł
 
+[init]
+	defaultBranch = master
+
 [apply]
 	whitespace = warn
 
