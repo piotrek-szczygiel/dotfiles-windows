@@ -1,17 +1,17 @@
 {
-	"bootstrapped": true,
-	"in_process_packages":
-	[
-	],
-	"installed_packages":
-	[
-		"GitGutter",
-		"INI",
-		"LSP",
-		"Package Control",
-		"PowerShell",
-		"SideBarEnhancements",
-		"Terminal",
-		"Theme - Monokai Pro",
-	],
+    "bootstrapped": true,
+    "in_process_packages":
+    [
+    ],
+    "installed_packages":
+    [
+        "GitGutter",
+        "INI",
+        "LSP",
+        "Package Control",
+        "PowerShell",
+        "SideBarEnhancements",
+        "Terminal",
+        "Theme - Monokai Pro",
+    ],
 }
