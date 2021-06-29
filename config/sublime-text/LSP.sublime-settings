@@ -1,0 +1,11 @@
+{
+    "show_diagnostics_panel_on_save": 0,
+
+    "clients":
+    {
+        "clangd":
+        {
+            "enabled": true
+        }
+    }
+}
