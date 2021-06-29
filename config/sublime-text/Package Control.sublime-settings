@@ -5,6 +5,7 @@
     ],
     "installed_packages":
     [
+        "AppendSemiColon",
         "GitGutter",
         "INI",
         "LSP",

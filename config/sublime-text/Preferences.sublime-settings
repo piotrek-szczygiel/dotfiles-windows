@@ -14,7 +14,7 @@
     "highlight_line": true,
     "indent_guide_options": ["draw_normal", "draw_active_single", "solid"],
     "scroll_speed": 0.0,
-    "show_panel_on_build": false,
+    // "show_panel_on_build": false,
     "theme": "Monokai Pro.sublime-theme",
     "translate_tabs_to_spaces": true,
     "trim_trailing_white_space_on_save": "all",
