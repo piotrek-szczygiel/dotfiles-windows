@@ -1,7 +1,7 @@
 @echo off
 
 doskey e=explorer "%%cd%%"
-doskey t=totalcmd /o "%%cd%%"
+doskey t=totalcmd64 /o "%%cd%%"
 
 doskey cat=bat $*
 doskey catp=bat --paging=never -p $*
@@ -11,7 +11,7 @@ doskey ls=ls --color=always $*
 doskey ll=ls --color=always -l $*
 doskey la=ls --color=always -la $*
 doskey sudo=gsudo --wait $*
-doskey time=powershell -c "$x=Measure-Command { $* | Out-Default };Write-Host -ForegroundColor Green ""Elapsed: $($x.TotalMilliseconds)ms"""
+doskey timeps=powershell -c "$x=Measure-Command { $* | Out-Default };Write-Host -ForegroundColor Green ""Elapsed: $($x.TotalMilliseconds)ms"""
 doskey zf=z -I $*
 
 doskey md=mkdir ""$*"" $T cd ""$*""
