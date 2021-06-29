@@ -6,6 +6,7 @@
     "installed_packages":
     [
         "AppendSemiColon",
+        "FileIcons",
         "GitGutter",
         "INI",
         "LSP",
@@ -13,6 +14,6 @@
         "PowerShell",
         "SideBarEnhancements",
         "Terminal",
-        "Witness color scheme",
+        "Theme - Autumn",
     ],
 }

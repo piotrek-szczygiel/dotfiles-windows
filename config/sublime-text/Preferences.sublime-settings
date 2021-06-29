@@ -1,10 +1,8 @@
 {
-    "auto_complete": false,
-    "caret_style": "smooth",
     "caret_extra_top": 0,
     "caret_extra_bottom": 0,
     "caret_extra_width": 2,
-    "color_scheme": "Packages/Witness color scheme/Witness.sublime-color-scheme",
+    "color_scheme": "Packages/Theme - Autumn/Autumn - Birch/Autumn Birch - Turbo.tmTheme",
     "default_line_ending": "unix",
     "draw_white_space": ["all_tabs", "trailing", "isolated", "selection"],
     "ensure_newline_at_eof_on_save": true,
