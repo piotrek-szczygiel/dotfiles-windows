@@ -8,11 +8,13 @@
         "AppendSemiColon",
         "FileIcons",
         "GitGutter",
+        "HighlightWords",
         "INI",
         "LSP",
         "Package Control",
         "PowerShell",
         "SideBarEnhancements",
         "Terminal",
+        "TodoReview",
     ],
 }
