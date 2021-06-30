@@ -3,5 +3,17 @@
     "working_dir": "$folder",
     "file_regex": "error: (.*?):([0-9]*):[0-9]*: .*?: (.*)",
     "windows": {"encoding": "cp852", "file_regex": "(.*?)\\(([0-9]*)\\): .*?: (.*)"},
-    "env": {"COLORTERM": "nocolor"}
+    "env": {"COLORTERM": "nocolor"},
+    "variants":
+    [
+        {
+            "name": "Run",
+            "cmd": ["xmake", "run", "-w", "$folder"]
+        },
+
+        {
+            "name": "Build and Run",
+            "shell_cmd": "xmake && xmake run -w \"$folder\""
+        }
+    ]
 }

@@ -1,4 +1,26 @@
 [
+    // Run
+    {
+        "keys": ["f5"],
+        "command": "build", "args": {
+            "variant": "Run"
+        },
+    },
+
+    // Build and Run
+    {
+        "keys": ["f9"],
+        "command": "build", "args": {
+            "variant": "Build and Run"
+        }
+    },
+
+    // Cancel build
+    {
+        "keys": ["f10"],
+        "command": "cancel_build"
+    },
+
     // Go To Definition
     {
         "command": "lsp_symbol_definition",
@@ -21,6 +43,7 @@
             }
         ]
     },
+
     // Rename Symbol
     {
         "command": "lsp_symbol_rename",
@@ -35,6 +58,7 @@
             }
         ]
     },
+
     // Format Document
     {
         "command": "lsp_format_document",
@@ -49,6 +73,7 @@
             }
         ]
     },
+
     // Document Symbols (a replacement for ST's "Goto Symbol")
     {
         "command": "lsp_document_symbols",
@@ -63,6 +88,7 @@
             }
         ]
     },
+
     // Workspace Symbols (a replacement for ST's "Goto Symbol In Project")
     {
         "command": "lsp_workspace_symbols",
@@ -76,5 +102,5 @@
                 "operand": "workspaceSymbolProvider"
             }
         ]
-    },
+    }
 ]
