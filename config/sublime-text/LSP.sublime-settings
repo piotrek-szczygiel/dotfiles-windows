@@ -1,5 +1,6 @@
 {
     "show_diagnostics_panel_on_save": 0,
+    "show_code_actions": "bulb",
 
     "clients":
     {
