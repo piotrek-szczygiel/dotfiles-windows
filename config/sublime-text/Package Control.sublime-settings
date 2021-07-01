@@ -5,7 +5,9 @@
     ],
     "installed_packages":
     [
+        "AdvancedNewFile",
         "AppendSemiColon",
+        "EditorConfig",
         "FileIcons",
         "GitGutter",
         "INI",
@@ -13,8 +15,6 @@
         "Package Control",
         "PowerShell",
         "Shader Syntax (GLSL HLSL Cg)",
-        "SideBarEnhancements",
         "Terminal",
-        "TodoReview",
     ],
 }
