@@ -29,7 +29,7 @@ function Run-Bootstrap {
         "Notepad++.Notepad++",
         "Rufus.Rufus",
         #"SublimeHQ.SublimeMerge --version 2056",
-        #"SublimeHQ.SublimeText.4 --version 4.0.0.410700",
+        "SublimeHQ.SublimeText.4 --version 4.0.0.410700",
         "Telegram.TelegramDesktop",
         "VideoLAN.VLC",
         "voidtools.Everything",
@@ -104,8 +104,10 @@ function Run-Bootstrap {
     Add-To-Path "C:\Program Files\Sublime Text"
     Add-To-Path "C:\Program Files\Sublime Merge"
 
+    gsudo cache on
+
     Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
-    gsudo --wait cmd /c "$Destination\bin\link-all.bat"
+    gsudo --wait python "$Destination\bin\link-all.py"
 
     Write-Host "Enabling SSH Agent" -ForegroundColor Cyan
     Set-Service -StartupType Automatic ssh-agent
@@ -114,6 +116,8 @@ function Run-Bootstrap {
     Write-Host "Enabling WSL" -ForegroundColor Cyan
     gsudo --wait dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
     gsudo --wait dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+    gsudo cache off
 
     Write-Host "Enabling clink autostart" -ForegroundColor Cyan
     clink autorun install
