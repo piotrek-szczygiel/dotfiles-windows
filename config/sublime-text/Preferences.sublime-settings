@@ -9,16 +9,12 @@
     "font_size": 14,
     "hardware_acceleration": "opengl",
     "highlight_line": true,
-    "hot_exit": "disabled",
     "indent_guide_options": ["draw_normal", "draw_active_single", "solid"],
-    "rulers": [120],
-    "scroll_speed": 0.0,
     "theme": "Adaptive.sublime-theme",
     "translate_tabs_to_spaces": true,
     "trim_trailing_white_space_on_save": "all",
     "word_wrap": true,
     "ignored_packages": [
-        "LSP",
         "Vintage",
     ],
 }
