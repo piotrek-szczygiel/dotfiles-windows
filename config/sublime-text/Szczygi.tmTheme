@@ -110,6 +110,8 @@
             <string>keyword</string>
             <key>settings</key>
             <dict>
+                <key>fontStyle</key>
+                <string>bold</string>
                 <key>foreground</key>
                 <string>#b38320</string>
             </dict>
@@ -119,6 +121,8 @@
             <string>keyword.control</string>
             <key>settings</key>
             <dict>
+                <key>fontStyle</key>
+                <string>bold</string>
                 <key>foreground</key>
                 <string>#b38320</string>
             </dict>
@@ -128,6 +132,8 @@
             <string>keyword.operator.word</string>
             <key>settings</key>
             <dict>
+                <key>fontStyle</key>
+                <string>bold</string>
                 <key>foreground</key>
                 <string>#b38320</string>
             </dict>
