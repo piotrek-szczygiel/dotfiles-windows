@@ -6,20 +6,18 @@ doskey t=totalcmd64 /o "%%cd%%"
 doskey cat=bat $*
 doskey catp=bat --paging=never -p $*
 
-doskey l=ls --color=always $*
-doskey ls=ls --color=always $*
-doskey ll=ls --color=always -l $*
-doskey la=ls --color=always -la $*
+doskey l=lsd $*
+doskey ls=lsd $*
+doskey ll=lsd -l $*
+doskey la=lsd -la $*
 doskey sudo=gsudo --wait $*
 doskey timeps=powershell -c "$x=Measure-Command { $* | Out-Default };Write-Host -ForegroundColor Green ""Elapsed: $($x.TotalMilliseconds)ms"""
 doskey zf=z -I $*
 
 doskey x=xmake $*
-doskey xf=xmake format $*
 doskey xr=xmake run -w. $*
 doskey xc=xmake project -k compile_commands $*
-doskey xd=xmake config -m debug -y $*
-doskey xrel=xmake config -m release $*
+doskey xm=xmake config -y -m $*
 
 doskey md=mkdir ""$*"" $T cd ""$*""
 doskey vs="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
