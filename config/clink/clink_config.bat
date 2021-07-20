@@ -17,6 +17,7 @@ doskey zf=z -I $*
 doskey x=xmake $*
 doskey xr=xmake run -w. $*
 doskey xc=xmake project -k compile_commands $*
+doskey xf=xmake format $*
 doskey xm=xmake config -y -m $*
 
 doskey md=mkdir ""$*"" $T cd ""$*""

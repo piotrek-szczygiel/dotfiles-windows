@@ -12,7 +12,8 @@
                 <key>background</key>
                 <string>#1c1612</string>
                 <key>caret</key>
-                <string>#e08300</string>
+                <string>#00d1e0</string>
+                <!-- <string>#e08300</string> -->
                 <key>findHighlight</key>
                 <string>#f58f00</string>
                 <key>findHighlightForeground</key>
@@ -26,7 +27,7 @@
                 <key>invisibles</key>
                 <string>#7b6f65</string>
                 <key>lineHighlight</key>
-                <string>#31271f</string>
+                <string>#251f1b</string>
                 <key>minimapBorder</key>
                 <string>#3f3523</string>
                 <key>selection</key>
@@ -557,10 +558,11 @@
             <string>invalid</string>
             <key>settings</key>
             <dict>
-                <key>background</key>
-                <string>#f2a188</string>
+                <!-- <key>background</key> -->
+                <!-- <string>#f2a188</string> -->
                 <key>foreground</key>
-                <string>#242424</string>
+                <string>#bb2424</string>
+                <!-- <string>#242424</string> -->
             </dict>
         </dict>
         <dict>
@@ -568,10 +570,11 @@
             <string>invalid.deprecated</string>
             <key>settings</key>
             <dict>
-                <key>background</key>
-                <string>#f2e088</string>
+                <!-- <key>background</key> -->
+                <!-- <string>#f2e088</string> -->
                 <key>foreground</key>
-                <string>#242424</string>
+                <string>#bb2424</string>
+                <!-- <string>#242424</string> -->
             </dict>
         </dict>
         <dict>
