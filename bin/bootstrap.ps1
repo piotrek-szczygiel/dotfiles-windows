@@ -27,9 +27,8 @@ function Run-Bootstrap {
         "Microsoft.VisualStudioCode",
         "Microsoft.WindowsTerminal",
         "Notepad++.Notepad++",
+        "Python.Python.3",
         "Rufus.Rufus",
-        #"SublimeHQ.SublimeMerge --version 2056",
-        "SublimeHQ.SublimeText.4 --version 4.0.0.410700",
         "Telegram.TelegramDesktop",
         "VideoLAN.VLC",
         "voidtools.Everything",
@@ -66,7 +65,6 @@ function Run-Bootstrap {
         "lua",
         "neovim",
         "ninja",
-        "python",
         "ripgrep",
         "tokei"
     )
