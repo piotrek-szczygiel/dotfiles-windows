@@ -1,0 +1,13 @@
+# name: Controls what startup logo to show
+# type: enum
+# options: none,full,short
+clink.logo = none
+
+# name: Auto-answer terminate prompt
+# type: enum
+# options: off,answer_yes,answer_no
+cmd.auto_answer = answer_yes
+
+# name: Pressing Ctrl-D exits session
+# type: boolean
+cmd.ctrld_exits = False

@@ -1,0 +1,4 @@
+add_newline = false
+format = """\
+[╭╴](238)$env_var\
+$all[╰─](238)$character"""

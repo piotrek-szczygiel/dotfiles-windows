@@ -14,6 +14,7 @@ config = os.path.join(dotfiles, "config")
 
 links = {
     "clink": f"{localappdata}\\clink",
+    "config": f"{home}\\.config",
     "home": f"{home}",
     "lsd": f"{appdata}\\lsd"
 }
