@@ -2,13 +2,18 @@ $CloneUrl = "https://github.com/piotrek-szczygiel/dotfiles-windows"
 $PushUrl = "git@github.com:piotrek-szczygiel/dotfiles-windows"
 $Destination = "$env:USERPROFILE\dotfiles"
 
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+function Reset-Env {
+    Set-Item -Path (('Env:', $args[0]) -Join '') -Value ((
+            [System.Environment]::GetEnvironmentVariable($args[0], "Machine"),
+            [System.Environment]::GetEnvironmentVariable($args[0], "User")
+        ) -Match '.' -Join ';')
+}
 
 function Add-To-Path($Path) {
     [Environment]::SetEnvironmentVariable("Path", [System.Environment]::GetEnvironmentVariable("Path", "User") + ";" + $Path, "User")
 }
 
-function Run-Bootstrap {
+function Start-Bootstrap {
     if (-Not (Get-Command winget 2> $null)) {
         Write-Host "Unable to launch winget!" -ForegroundColor Red
         Write-Host "Install App Installer from Microsoft Store!" -ForegroundColor Yellow
@@ -37,7 +42,8 @@ function Run-Bootstrap {
     if (-Not (Get-Command scoop 2> $null)) {
         Write-Host "Installing scoop..." -ForegroundColor Cyan
         Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://get.scoop.sh")
-    } else {
+    }
+    else {
         Write-Host "Scoop already installed. Updating..."
         scoop update
         scoop update *
@@ -61,7 +67,7 @@ function Run-Bootstrap {
         scoop install $Package
     }
 
-    $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+    Reset-Env Path
 
     if (Test-Path "$Destination" -PathType Container) {
         Write-Host "Updating existing dotfiles" -ForegroundColor Cyan
@@ -85,6 +91,9 @@ function Run-Bootstrap {
     Add-To-Path "$env:USERPROFILE\OneDrive\Windows\bin"
     Add-To-Path "$env:LOCALAPPDATA\clink"
 
+    Reset-Env Path
+    Reset-Env dotfiles
+
     Write-Host "Updating python packages" -ForegroundColor Cyan
     python -m pip install --upgrade pip
     pip install --upgrade black flake8
@@ -103,4 +112,4 @@ function Run-Bootstrap {
     Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
 }
 
-Run-Bootstrap
+Start-Bootstrap

@@ -3,6 +3,7 @@ from pathlib import Path
 
 dotfiles = os.environ.get("dotfiles")
 if dotfiles is None:
+    print("No environment variable 'dotfiles' found")
     exit(1)
 
 appdata = os.environ["appdata"]
