@@ -11,28 +11,21 @@ function Add-To-Path($Path) {
 function Run-Bootstrap {
     if (-Not (Get-Command winget 2> $null)) {
         Write-Host "Unable to launch winget!" -ForegroundColor Red
-        Write-Host "Install Windows Package Manager from https://github.com/microsoft/winget-cli/releases" -ForegroundColor Yellow
+        Write-Host "Install App Installer from Microsoft Store!" -ForegroundColor Yellow
         return
     }
 
     $WingetPackages = @(
         "7zip.7zip",
-        "Azul.Zulu.16",
+        "chrisant996.Clink",
         "Discord.Discord",
-        "flux.flux",
         "gerardog.gsudo",
-        "Ghisler.TotalCommander",
+        "Git.Git",
         "Microsoft.PowerToys",
-        "Microsoft.VisualStudio.2019.Community",
         "Microsoft.VisualStudioCode",
-        "Microsoft.WindowsTerminal",
-        "Notepad++.Notepad++",
         "Python.Python.3",
-        "Rufus.Rufus",
         "Telegram.TelegramDesktop",
-        "VideoLAN.VLC",
-        "voidtools.Everything",
-        "WinDirStat.WinDirStat"
+        "VideoLAN.VLC"
     )
 
     Write-Host "Installing applications using winget" -ForegroundColor Cyan
@@ -52,19 +45,11 @@ function Run-Bootstrap {
 
     $ScoopPackages = @(
         "bat",
-        "clink",
-        "cmake",
-        "coreutils",
-        "delta",
-        "dust",
         "fd",
         "fzf",
-        "git",
         "jq",
         "less",
         "lua",
-        "neovim",
-        "ninja",
         "ripgrep",
         "tokei"
     )
@@ -96,11 +81,8 @@ function Run-Bootstrap {
     [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
     [Environment]::SetEnvironmentVariable("FZF_DEFAULT_OPTS", "--height 40% --ansi", "User")
 
-    Add-To-Path "C:\Program Files\totalcmd"
     Add-To-Path "$env:USERPROFILE\OneDrive\Windows\bin"
     Add-To-Path "$env:LOCALAPPDATA\clink"
-    Add-To-Path "C:\Program Files\Sublime Text"
-    Add-To-Path "C:\Program Files\Sublime Merge"
 
     gsudo cache on
 
@@ -111,27 +93,9 @@ function Run-Bootstrap {
     Set-Service -StartupType Automatic ssh-agent
     Start-Service ssh-agent
 
-    Write-Host "Enabling WSL" -ForegroundColor Cyan
-    gsudo --wait dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-    gsudo --wait dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-
     gsudo cache off
 
-    Write-Host "Enabling clink autostart" -ForegroundColor Cyan
-    clink autorun install
-
-    Write-Host "Downloading Plugin Manager for Neovim"
-    Invoke-WebRequest -useb "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" |`
-        New-Item "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
-
-    Write-Host "Installing plugins for Neovim"
-    nvim +PlugInstall +qall
-
     Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
-    Write-Host ""
-    Write-Host "Install WSL2 Kernel from https://aka.ms/wsl2kernel"
-    Write-Host "Remember to execute after rebooting"
-    Write-Host "    wsl --set-default-version 2" -ForegroundColor Yellow
 }
 
 Run-Bootstrap

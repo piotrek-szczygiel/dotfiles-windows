@@ -10,8 +10,6 @@
 
 [core]
 	autocrlf = input
-	editor = nvim
-	pager = delta
 
 [push]
 	default = simple
@@ -20,20 +18,3 @@
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"
 	pushInsteadOf = "git://github.com/"
-
-[credential]
-	helper = manager
-
-[interactive]
-	diffFilter = delta --color-only
-
-[delta]
-	features = line-numbers decorations
-
-[delta "decorations"]
-	commit-decoration-style = bold yellow box ul
-	file-style = bold yellow ul
-	file-decoration-style = none
-
-[credential "helperselector"]
-	selected = manager-core

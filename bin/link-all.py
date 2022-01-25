@@ -14,9 +14,7 @@ config = os.path.join(dotfiles, "config")
 links = {
     "clink": f"{localappdata}\\clink",
     "home": f"{home}",
-    "lsd": f"{appdata}\\lsd",
-    "neovim": f"{localappdata}\\nvim",
-    "sublime-text": f"{appdata}\\Sublime Text\\Packages\\User"
+    "lsd": f"{appdata}\\lsd"
 }
 
 for program in os.listdir(config):
