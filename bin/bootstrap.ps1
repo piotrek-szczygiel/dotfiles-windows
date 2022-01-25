@@ -84,6 +84,10 @@ function Run-Bootstrap {
     Add-To-Path "$env:USERPROFILE\OneDrive\Windows\bin"
     Add-To-Path "$env:LOCALAPPDATA\clink"
 
+    Write-Host "Updating python packages" -ForegroundColor Cyan
+    python -m pip install --upgrade pip
+    pip install --upgrade black flake8
+
     gsudo cache on
 
     Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
