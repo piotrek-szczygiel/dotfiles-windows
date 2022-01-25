@@ -49,6 +49,7 @@ function Run-Bootstrap {
         "fzf",
         "jq",
         "less",
+        "lsd",
         "lua",
         "ripgrep",
         "tokei"
