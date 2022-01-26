@@ -58,6 +58,7 @@ function Start-Bootstrap {
         "lsd",
         "lua",
         "ripgrep",
+        "starship",
         "tokei"
     )
 
