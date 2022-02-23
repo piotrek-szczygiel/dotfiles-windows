@@ -7,6 +7,7 @@ doskey cat=bat $*
 doskey catp=bat --paging=never -p $*
 
 doskey q=exit /b 0
+doskey exit=echo Use 'q' to exit
 
 doskey l=lsd $*
 doskey ls=lsd $*
