@@ -22,6 +22,7 @@ function Start-Bootstrap {
 
     $WingetPackages = @(
         "7zip.7zip",
+        "Amazon.Corretto.17",
         "chrisant996.Clink",
         "Discord.Discord",
         "gerardog.gsudo",
@@ -99,8 +100,6 @@ function Start-Bootstrap {
     python -m pip install --upgrade pip
     pip install --upgrade black flake8
 
-    gsudo cache on
-
     Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
     gsudo --wait python "$Destination\bin\link-all.py"
 
@@ -108,7 +107,8 @@ function Start-Bootstrap {
     Set-Service -StartupType Automatic ssh-agent
     Start-Service ssh-agent
 
-    gsudo cache off
+    Write-Host "Enabling clink autorun" -ForegroundColor Cyan
+    & "C:\Program Files (x86)\clink\clink_x64.exe" autorun install
 
     Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
 }
