@@ -52,12 +52,14 @@ function Start-Bootstrap {
 
     $ScoopPackages = @(
         "bat",
+        "coreutils",
         "fd",
         "fzf",
         "jq",
         "less",
         "lsd",
         "lua",
+        "make",
         "ripgrep",
         "starship",
         "tokei"
