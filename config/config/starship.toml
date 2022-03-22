@@ -1,4 +1,20 @@
-add_newline = false
-format = """\
-[╭╴](238)$env_var\
-$all[╰─](238)$character"""
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$line_break\
+$character"""
+
+right_format = """
+$cmd_duration\
+$time"""
+
+[git_metrics]
+disabled = false
+
+[time]
+disabled = false

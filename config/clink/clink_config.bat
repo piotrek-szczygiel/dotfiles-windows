@@ -1,10 +1,8 @@
 @echo off
 
 doskey e=explorer "%%cd%%"
-doskey t=totalcmd64 /o "%%cd%%"
 
-doskey cat=bat $*
-doskey catp=bat --paging=never -p $*
+doskey cat=bat --paging=never -p $*
 
 doskey q=exit /b 0
 doskey exit=echo Use 'q' to exit
@@ -14,7 +12,6 @@ doskey ls=lsd $*
 doskey ll=lsd -l $*
 doskey la=lsd -la $*
 doskey sudo=gsudo --wait $*
-doskey timeps=powershell -c "$x=Measure-Command { $* | Out-Default };Write-Host -ForegroundColor Green ""Elapsed: $($x.TotalMilliseconds)ms"""
 doskey zf=z -I $*
 
 doskey md=mkdir ""$*"" $T cd ""$*""
