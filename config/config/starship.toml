@@ -6,13 +6,9 @@ $git_branch\
 $git_state\
 $git_status\
 $git_metrics\
+$cmd_duration\
 $line_break\
-$time\
 $character"""
 
 [git_metrics]
 disabled = false
-
-[time]
-disabled = false
-format = "[$time](bright-black)"
