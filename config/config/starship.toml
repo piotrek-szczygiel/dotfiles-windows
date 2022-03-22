@@ -7,14 +7,12 @@ $git_state\
 $git_status\
 $git_metrics\
 $line_break\
+$time\
 $character"""
-
-right_format = """
-$cmd_duration\
-$time"""
 
 [git_metrics]
 disabled = false
 
 [time]
 disabled = false
+format = "[$time](bright-black)"
