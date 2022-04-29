@@ -7,10 +7,10 @@ doskey cat=bat --paging=never -p $*
 doskey q=exit /b 0
 doskey exit=echo Use 'q' to exit
 
-doskey l=lsd $*
-doskey ls=lsd $*
-doskey ll=lsd -l $*
-doskey la=lsd -la $*
+doskey l=exa --icons --group-directories-first $*
+doskey ls=exa --icons --group-directories-first $*
+doskey ll=exa --icons --group-directories-first -l $*
+doskey la=exa --icons --group-directories-first -la $*
 doskey sudo=gsudo --wait $*
 doskey zf=z -I $*
 
