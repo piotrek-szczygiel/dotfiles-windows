@@ -28,7 +28,7 @@ function Start-Bootstrap {
         "gerardog.gsudo",
         "Git.Git",
         "Microsoft.PowerToys",
-        "Microsoft.VisualStudioCode",
+        "Microsoft.VisualStudioCode --override '/SILENT /mergetasks=`"!runcode,addcontextmenufiles,addcontextmenufolders`"'",
         "Python.Python.3",
         "Telegram.TelegramDesktop",
         "VideoLAN.VLC"
