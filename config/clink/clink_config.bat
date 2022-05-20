@@ -14,6 +14,8 @@ doskey la=exa --icons --group-directories-first -la $*
 doskey sudo=gsudo --wait $*
 doskey zf=z -I $*
 
+doskey tg=terragrunt $*
+
 doskey md=mkdir ""$*"" $T cd ""$*""
 
 doskey codefd=powershell -c "code $(fd --type f . | fzf)"
@@ -24,7 +26,7 @@ doskey gus=git restore --staged $*
 doskey gc=git commit $*
 doskey gca=git commit --all $*
 doskey gclean=git clean -ffxd :/ $*
-doskey gam=git commit --all --amend --no-edit $*
+doskey gam=git commit --amend --no-edit $*
 doskey gco=git checkout -- $*
 doskey gd=git diff $*
 doskey gl=git pull $*
