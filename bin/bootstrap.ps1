@@ -24,14 +24,11 @@ function Start-Bootstrap {
         "7zip.7zip",
         "Amazon.Corretto.17",
         "chrisant996.Clink",
-        "Discord.Discord",
         "gerardog.gsudo",
         "Git.Git",
         "Microsoft.PowerToys",
         "Microsoft.VisualStudioCode --override '/SILENT /mergetasks=`"!runcode,addcontextmenufiles,addcontextmenufolders`"'",
-        "Python.Python.3",
-        "Telegram.TelegramDesktop",
-        "VideoLAN.VLC"
+        "Python.Python.3"
     )
 
     Write-Host "Installing applications using winget" -ForegroundColor Cyan
