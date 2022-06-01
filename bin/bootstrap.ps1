@@ -28,7 +28,6 @@ function Start-Bootstrap {
         @("Amazon.Corretto.17",          "--silent"),
         @("chrisant996.Clink",           "--silent"),
         @("Git.Git",                     "--interactive"),
-        @("Microsoft.PowerToys",         "--silent"),
         @("Microsoft.VisualStudioCode",  "--interactive"),
         @("Python.Python.3",             "--silent"),
         @("voidtools.Everything",        "--silent")
