@@ -103,8 +103,8 @@ function Start-Bootstrap {
     gsudo --wait python "$Destination\bin\link-all.py"
 
     Write-Host "Enabling SSH Agent" -ForegroundColor Cyan
-    Set-Service -StartupType Automatic ssh-agent
-    Start-Service ssh-agent
+    gsudo --wait Set-Service -StartupType Automatic ssh-agent
+    gsudo --wait Start-Service ssh-agent
 
     Write-Host "Enabling clink autorun" -ForegroundColor Cyan
     & "C:\Program Files (x86)\clink\clink_x64.exe" autorun install
