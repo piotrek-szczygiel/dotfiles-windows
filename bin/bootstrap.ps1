@@ -20,21 +20,24 @@ function Start-Bootstrap {
         return
     }
 
+    winget install --exact --id gerardog.gsudo --silent
+    gsudo cache on
+
     $WingetPackages = @(
-        "7zip.7zip",
-        "Amazon.Corretto.17",
-        "chrisant996.Clink",
-        "gerardog.gsudo",
-        "Git.Git",
-        "Microsoft.PowerToys",
-        "Microsoft.VisualStudioCode --override '/SILENT /mergetasks=`"!runcode,addcontextmenufiles,addcontextmenufolders`"'",
-        "Python.Python.3"
+        @("7zip.7zip",                   "--silent"),
+        @("Amazon.Corretto.17",          "--silent"),
+        @("chrisant996.Clink",           "--silent"),
+        @("Git.Git",                     "--interactive"),
+        @("Microsoft.PowerToys",         "--silent"),
+        @("Microsoft.VisualStudioCode",  "--interactive"),
+        @("Python.Python.3",             "--silent"),
+        @("voidtools.Everything",        "--silent")
     )
 
     Write-Host "Installing applications using winget" -ForegroundColor Cyan
     foreach ($Package in $WingetPackages) {
-        Write-Host "Installing winget package $Package..." -ForegroundColor Yellow
-        winget install --exact --silent --id $Package
+        Write-Host "Installing winget package $($Package[0])..." -ForegroundColor Yellow
+        gsudo --wait winget install --exact --id $Package[0] $Package[1]
     }
 
     if (-Not (Get-Command scoop 2> $null)) {
@@ -105,6 +108,8 @@ function Start-Bootstrap {
     Write-Host "Enabling SSH Agent" -ForegroundColor Cyan
     gsudo --wait Set-Service -StartupType Automatic ssh-agent
     gsudo --wait Start-Service ssh-agent
+
+    gsudo cache off
 
     Write-Host "Enabling clink autorun" -ForegroundColor Cyan
     & "C:\Program Files (x86)\clink\clink_x64.exe" autorun install
