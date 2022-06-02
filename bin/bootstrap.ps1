@@ -88,6 +88,7 @@ function Start-Bootstrap {
     [Environment]::SetEnvironmentVariable("HOME", "$env:USERPROFILE", "User")
     [Environment]::SetEnvironmentVariable("dotfiles", "$Destination", "User")
     [Environment]::SetEnvironmentVariable("GIT_SSH", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
+    [Environment]::SetEnvironmentVariable("GIT_SSH_COMMAND", "C:\Windows\System32\OpenSSH\ssh.exe", "User")
     [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
     [Environment]::SetEnvironmentVariable("FZF_DEFAULT_OPTS", "--height 40% --ansi", "User")
 
