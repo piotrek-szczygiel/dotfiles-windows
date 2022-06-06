@@ -6,6 +6,8 @@ return {
 
   default_cwd = "C:\\work",
 
+  enable_scroll_bar = true,
+
   hide_tab_bar_if_only_one_tab = true,
   tab_bar_at_bottom = true,
   use_fancy_tab_bar = false,
@@ -35,5 +37,8 @@ return {
       action=wezterm.action{ActivatePaneDirection="Up"}},
     { key = "j", mods="CTRL|SHIFT|ALT",
       action=wezterm.action{ActivatePaneDirection="Down"}},
+
+    { key = "l", mods="CTRL|SHIFT",
+      action=wezterm.action{ClearScrollback="ScrollbackOnly"}},
   }
 }
