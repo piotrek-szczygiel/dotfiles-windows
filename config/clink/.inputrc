@@ -1,0 +1,5 @@
+$if clink
+
+C-f: forward-char
+
+$endif

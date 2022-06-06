@@ -1,6 +1,10 @@
 return {
-  initial_cols = 120,
+  initial_cols = 140,
   initial_rows = 40,
+
+  tab_bar_at_bottom = true,
+  use_fancy_tab_bar = false,
+  tab_max_width = 50,
 
   window_padding = {
     left = 0,
@@ -8,8 +12,4 @@ return {
     top = 0,
     bottom = 0,
   },
-
-  tab_bar_at_bottom = true,
-  use_fancy_tab_bar = false,
-  tab_max_width = 50
 }
