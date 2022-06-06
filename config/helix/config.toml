@@ -1,0 +1,13 @@
+theme = "gruvbox"
+
+[editor.lsp]
+display-messages = true
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.file-picker]
+hidden = false
+
+[editor.whitespace.render]
+tab = "all"
