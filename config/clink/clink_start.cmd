@@ -29,3 +29,5 @@ doskey zf=z -I $*
 
 doskey q=exit /b 0
 doskey exit=echo Use 'q' to exit
+
+set LOGONSERVER=\\LOCALHOST

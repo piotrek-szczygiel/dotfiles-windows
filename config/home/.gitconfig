@@ -11,7 +11,21 @@
 [core]
 	autocrlf = input
 	editor = hx
+	pager = delta
 	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	light = false
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
 
 [push]
 	default = simple
