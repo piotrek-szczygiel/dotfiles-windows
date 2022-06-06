@@ -24,7 +24,7 @@ return {
     top = 0,
     bottom = 0,
   },
-  
+
   keys = {
     { key = "h", mods="CTRL|SHIFT|ALT",
       action=wezterm.action{ActivatePaneDirection="Left"}},
