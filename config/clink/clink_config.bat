@@ -11,15 +11,12 @@ doskey l=exa --icons --group-directories-first $*
 doskey ls=exa --icons --group-directories-first $*
 doskey ll=exa --icons --group-directories-first -l $*
 doskey la=exa --icons --group-directories-first -la $*
+
 doskey sudo=gsudo --wait $*
-doskey zf=z -I $*
 
 doskey tg=terragrunt $*
 
 doskey md=mkdir ""$*"" $T cd ""$*""
-
-doskey codefd=powershell -c "code $(fd --type f . | fzf)"
-doskey coderg=rg --column --line-number --no-heading --smart-case --color=always . $b fzf $b powershell -c "$a=$(Read-Host);if([string]::IsNullOrEmpty($a)){exit};$a=$a.split(':')[0..2];if($a.Length -ne 3){exit};$c=[string]::Format('code --goto \"{0}\"', $a -Join ':');iex $c"
 
 doskey ga=git add $*
 doskey gus=git restore --staged $*
