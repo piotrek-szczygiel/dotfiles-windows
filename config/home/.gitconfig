@@ -11,6 +11,7 @@
 [core]
 	autocrlf = input
 	editor = hx
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 
 [push]
 	default = simple
