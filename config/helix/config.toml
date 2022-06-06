@@ -5,9 +5,14 @@ display-messages = true
 
 [editor.cursor-shape]
 insert = "bar"
+normal = "block"
+select = "underline"
 
 [editor.file-picker]
 hidden = false
 
 [editor.whitespace.render]
 tab = "all"
+
+[keys.normal]
+C-s = ":w"
