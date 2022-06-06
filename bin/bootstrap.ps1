@@ -54,6 +54,7 @@ function Start-Bootstrap {
         "bat",
         "coreutils",
         "fd",
+        "fzf",
         "helix",
         "jq",
         "less",

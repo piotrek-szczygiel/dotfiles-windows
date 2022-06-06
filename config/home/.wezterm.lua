@@ -4,11 +4,12 @@ return {
   initial_cols = 140,
   initial_rows = 40,
 
+  default_cwd = "C:\\work",
+
+  hide_tab_bar_if_only_one_tab = true,
   tab_bar_at_bottom = true,
   use_fancy_tab_bar = false,
-  tab_max_width = 50,
-
-  default_cwd = "C:\\work",
+  tab_max_width = 80,
 
   audible_bell = "Disabled",
   visual_bell = {
