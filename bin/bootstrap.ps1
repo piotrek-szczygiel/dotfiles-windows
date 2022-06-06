@@ -30,7 +30,8 @@ function Start-Bootstrap {
         @("Git.Git",                     "--interactive"),
         @("Microsoft.VisualStudioCode",  "--interactive"),
         @("Python.Python.3",             "--silent"),
-        @("voidtools.Everything",        "--silent")
+        @("voidtools.Everything",        "--silent"),
+        @("wez.wezterm",                 "--silent")
     )
 
     Write-Host "Installing applications using winget" -ForegroundColor Cyan
@@ -53,14 +54,13 @@ function Start-Bootstrap {
         "bat",
         "coreutils",
         "fd",
-        "fzf",
+        "helix",
         "jq",
         "less",
-        "lsd",
         "lua",
         "make",
+        "oh-my-posh",
         "ripgrep",
-        "starship",
         "tokei"
     )
 
