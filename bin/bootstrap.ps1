@@ -60,7 +60,6 @@ function Start-Bootstrap {
         "less",
         "lua",
         "make",
-        "oh-my-posh",
         "ripgrep",
         "tokei"
     )
