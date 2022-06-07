@@ -1,5 +1,6 @@
 $if clink
 
 C-f: forward-char
+C-z: "z -I .\C-M"
 
 $endif
