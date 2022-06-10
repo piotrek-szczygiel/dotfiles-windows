@@ -1,10 +1,10 @@
 local wezterm = require 'wezterm';
 
 return {
-  initial_cols = 140,
-  initial_rows = 40,
+  initial_cols = 120,
+  initial_rows = 30,
 
-  default_cwd = "C:\\work",
+  default_cwd = "C:\\dev",
   enable_scroll_bar = true,
   hide_tab_bar_if_only_one_tab = true,
 
