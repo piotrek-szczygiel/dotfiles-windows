@@ -53,6 +53,7 @@ function Start-Bootstrap {
     $ScoopPackages = @(
         "bat",
         "coreutils",
+        "delta",
         "fd",
         "fzf",
         "helix",

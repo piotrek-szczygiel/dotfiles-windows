@@ -11,6 +11,7 @@
 [core]
 	autocrlf = input
 	editor = hx
+	fsmonitor = true
 	pager = delta
 	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 
