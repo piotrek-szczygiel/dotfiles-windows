@@ -63,6 +63,7 @@ function Start-Bootstrap {
         "lua",
         "make",
         "ripgrep",
+        "starship",
         "tokei",
         "winfetch"
     )
