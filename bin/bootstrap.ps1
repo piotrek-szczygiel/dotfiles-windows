@@ -63,7 +63,8 @@ function Start-Bootstrap {
         "lua",
         "make",
         "ripgrep",
-        "tokei"
+        "tokei",
+        "winfetch"
     )
 
     Write-Host "Installing scoop packages" -ForegroundColor Cyan

@@ -35,3 +35,6 @@ doskey q=exit /b 0
 doskey exit=echo Use 'q' to exit
 
 set LOGONSERVER=\\LOCALHOST
+
+cls
+winfetch.cmd
