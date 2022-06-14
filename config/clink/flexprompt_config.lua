@@ -9,7 +9,7 @@ flexprompt.settings.right_frame = "none"
 flexprompt.settings.left_frame = "round"
 flexprompt.settings.style = "classic"
 flexprompt.settings.symbols = { prompt = "❯" }
-flexprompt.settings.right_prompt = "{exit}{duration}{vpn}{user}{battery}{time}"
+flexprompt.settings.right_prompt = "{exit}{duration}{vpn}{user}{time}"
 flexprompt.settings.flow = "concise"
 flexprompt.settings.use_icons = true
 flexprompt.settings.spacing = "sparse"
