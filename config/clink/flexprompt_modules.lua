@@ -170,12 +170,8 @@ end
 --  - For \\server\share\subdir it yields subdir
 --  - For \\server\share it yields \\server\share
 local function get_folder_name(dir)
-    local parent,child = path.toparent(dir)
-    dir = child
-    if #dir == 0 then
-        dir = parent
-    end
-    return dir
+    local parent, child = path.toparent(dir)
+    return child == "" and parent or child
 end
 
 local function abbreviate_parents(dir, all)
@@ -185,12 +181,80 @@ local function abbreviate_parents(dir, all)
     else
         tmp, suffix = path.toparent(dir)
     end
-    tmp = tmp:gsub("^([!-.0-%][-~])[^:/\\]*", "%1")
-    tmp = tmp:gsub("([/\\][!-.0-%][-~])[^/\\]*", "%1")
+    tmp = tmp:gsub("^([!-.0-[%]^-~])[^:/\\]*", "%1")
+    tmp = tmp:gsub("([/\\][!-.0-[%]^-~])[^/\\]*", "%1")
     if suffix and suffix ~= "" then
         tmp = path.join(tmp, suffix)
     end
     return tmp
+end
+
+local function maybe_apply_tilde(dir)
+    if flexprompt.settings.use_home_tilde then
+        local home = os.getenv("HOME")
+        if home and string.find(string.lower(dir), string.lower(home), 1, true--[[plain]]) == 1 then
+            dir = "~" .. string.sub(dir, #home + 1)
+            return dir, true
+        end
+    end
+    return dir
+end
+
+local function process_cwd_string(cwd, git_wks, args)
+    local shorten = flexprompt.parse_arg_keyword(args, "s", "shorten") and "all"
+    if not shorten then
+        shorten = flexprompt.parse_arg_token(args, "s", "shorten")
+    end
+
+    local real_git_dir -- for clarity; value is not used
+
+    local sym
+    local type = flexprompt.parse_arg_token(args, "t", "type") or "rootsmart"
+    if type == "folder" then
+        return get_folder_name(cwd)
+    end
+
+    local tilde
+    local orig_cwd = cwd
+    cwd, tilde = maybe_apply_tilde(cwd)
+
+    if type == "smart" or type == "rootsmart" then
+        if git_wks == nil then -- Don't double-hunt for it!
+            real_git_dir, git_wks = flexprompt.get_git_dir(orig_cwd)
+        end
+
+        if git_wks then
+            -- Get the git workspace folder name and reappend any part
+            -- of the directory that comes after.
+            -- Ex: C:\Users\username\some-repo\innerdir -> some-repo\innerdir
+            git_wks = maybe_apply_tilde(git_wks)
+            local git_wks_parent = path.toparent(git_wks) -- Don't use get_parent() here!
+            local appended_dir = string.sub(cwd, string.len(git_wks_parent) + 1)
+            local smart_dir = get_folder_name(git_wks_parent) .. appended_dir
+            if type == "rootsmart" then
+                local rootcolor = flexprompt.parse_arg_token(args, "rc", "rootcolor")
+                local parent = cwd:sub(1, #cwd - #smart_dir)
+                if shorten then
+                    parent = abbreviate_parents(parent, true--[[all]])
+                    if shorten ~= "smartroot" and shorten ~= "rootsmart" then
+                        smart_dir = abbreviate_parents(smart_dir)
+                    end
+                    shorten = nil
+                end
+                cwd = flexprompt.make_fluent_text(parent, rootcolor or true) .. smart_dir
+            else
+                cwd = smart_dir
+            end
+            local tmp = flexprompt.get_icon("cwd_git_symbol")
+            sym = (tmp ~= "") and tmp or nil
+        end
+    end
+
+    if shorten then
+        cwd = abbreviate_parents(cwd)
+    end
+
+    return cwd, sym
 end
 
 local function render_cwd(args)
@@ -206,74 +270,12 @@ local function render_cwd(args)
     end
     color, altcolor = flexprompt.parse_colors(colors, color, altcolor)
 
-    local shorten = flexprompt.parse_arg_keyword(args, "s", "shorten") and "all"
-    if not shorten then
-        shorten = flexprompt.parse_arg_token(args, "s", "shorten")
-    end
-
     local wizard = flexprompt.get_wizard_state()
     local cwd = wizard and wizard.cwd or os.getcwd()
     local git_wks = wizard and (wizard.git_dir or false)
-    local real_git_dir -- for clarify; value is not used
 
     local sym
-    local type = flexprompt.parse_arg_token(args, "t", "type") or "rootsmart"
-    if type == "folder" then
-        cwd = get_folder_name(cwd)
-    else
-        repeat
-            if flexprompt.settings.use_home_tilde then
-                local home = os.getenv("HOME")
-                if home and string.find(string.lower(cwd), string.lower(home)) == 1 then
-                    if not git_wks then
-                        real_git_dir, git_wks = flexprompt.get_git_dir(cwd) or false
-                    end
-                    if not git_wks then
-                        cwd = string.sub(cwd, #home + 1)
-                        if shorten then
-                            cwd = abbreviate_parents(cwd)
-                        end
-                        cwd = "~" .. cwd
-                        break
-                    end
-                end
-            end
-
-            if type == "smart" or type == "rootsmart" then
-                if git_wks == nil then -- Don't double-hunt for it!
-                    real_git_dir, git_wks = flexprompt.get_git_dir()
-                end
-                if git_wks then
-                    -- Get the git workspace folder name and reappend any part
-                    -- of the directory that comes after.
-                    -- Ex: C:\Users\username\some-repo\innerdir -> some-repo\innerdir
-                    local git_wks_parent = path.toparent(git_wks) -- Don't use get_parent() here!
-                    local appended_dir = string.sub(cwd, string.len(git_wks_parent) + 1)
-                    local smart_dir = get_folder_name(git_wks_parent) .. appended_dir
-                    if type == "rootsmart" then
-                        local rootcolor = flexprompt.parse_arg_token(args, "rc", "rootcolor")
-                        local parent = cwd:sub(1, #cwd - #smart_dir)
-                        if shorten then
-                            parent = abbreviate_parents(parent, true--[[all]])
-                            if shorten ~= "smartroot" then
-                                smart_dir = abbreviate_parents(smart_dir)
-                            end
-                            shorten = nil
-                        end
-                        cwd = flexprompt.make_fluent_text(parent, rootcolor or true) .. smart_dir
-                    else
-                        cwd = smart_dir
-                    end
-                    local tmp = flexprompt.get_icon("cwd_git_symbol")
-                    sym = (tmp ~= "") and tmp or nil
-                end
-            end
-        until true
-    end
-
-    if shorten then
-        cwd = abbreviate_parents(cwd)
-    end
+    cwd, sym = process_cwd_string(cwd, git_wks, args)
 
     cwd = flexprompt.append_text(flexprompt.get_dir_stack_depth(), cwd)
     cwd = flexprompt.append_text(sym or flexprompt.get_module_symbol(), cwd)
@@ -450,10 +452,11 @@ local function render_exit(args)
 end
 
 --------------------------------------------------------------------------------
--- GIT MODULE:  {git:nostaged:noaheadbehind:color_options}
+-- GIT MODULE:  {git:nostaged:noaheadbehind:counts:color_options}
 --  - 'nostaged' omits the staged details.
 --  - 'noaheadbehind' omits the ahead/behind details.
 --  - 'showremote' shows the branch and its remote.
+--  - 'counts' shows the count of added/modified/etc files.
 --  - color_options override status colors as follows:
 --      - clean=color_name,alt_color_name           When status is clean.
 --      - conflict=color_name,alt_color_name        When a conflict exists.
@@ -464,20 +467,18 @@ end
 --      - unpublished=color_name,alt_color_name     When status is clean but branch is not published.
 
 local git = {}
-local cached_info = {}
 local fetched_repos = {}
 
--- Add status details to the segment text.  Depending on git.status_details this
--- may show verbose counts for operations, or a concise overall count.
+-- Add status details to the segment text.
 --
 -- Synchronous call.
-local function add_details(text, details)
+local function add_details(text, details, include_counts)
     local add = details.add or 0
     local modify = details.modify or 0
     local delete = details.delete or 0
     local rename = details.rename or 0
     local untracked = details.untracked or 0
-    if git.status_details then
+    if include_counts then
         if add > 0 then
             text = flexprompt.append_text(text, flexprompt.get_symbol("addcount") .. add)
         end
@@ -573,23 +574,8 @@ local function render_git(args)
         branch, detached = flexprompt.get_git_branch(git_dir)
         if not branch then return end
 
-        -- Discard cached info if from a different repo or branch.
-        if (cached_info.git_dir ~= git_dir) or (cached_info.git_branch ~= branch) then
-            cached_info = {}
-            cached_info.git_dir = git_dir
-            cached_info.git_branch = branch
-        end
-
-        -- Use coroutine to collect status info asynchronously.
-        info = flexprompt.promptcoroutine(collect_git_info)
-
-        -- Use cached info until coroutine is finished.
-        if not info then
-            info = cached_info.git_info or {}
-            refreshing = true
-        else
-            cached_info.git_info = info
-        end
+        -- Collect or retrieve cached info.
+        info, refreshing = flexprompt.prompt_info(git, git_dir, branch, collect_git_info)
 
         -- Add remote to branch name if requested.
         if flexprompt.parse_arg_keyword(args, "sr", "showremote") then
@@ -613,6 +599,7 @@ local function render_git(args)
     local colors = git_colors.clean
     local color, altcolor
     local icon_name = "branch"
+    local include_counts = flexprompt.parse_arg_keyword(args, "num", "counts")
     if gitUnpublished then
         icon_name = "unpublished"
         colors = git_colors.unpublished
@@ -623,7 +610,7 @@ local function render_git(args)
         text = flexprompt.append_text(text, flexprompt.get_symbol("conflict"))
     elseif gitStatus and gitStatus.working then
         colors = git_colors.dirty
-        text = add_details(text, gitStatus.working)
+        text = add_details(text, gitStatus.working, include_counts)
     elseif gitUnknown then
         colors = git_colors.unknown
     end
@@ -636,7 +623,7 @@ local function render_git(args)
     if not noStaged and gitStatus and gitStatus.staged then
         text = flexprompt.append_text("", flexprompt.get_symbol("staged"))
         colors = git_colors.staged
-        text = add_details(text, gitStatus.staged)
+        text = add_details(text, gitStatus.staged, include_counts)
         color, altcolor = parse_color_token(args, colors)
         table.insert(segments, { text, color, altcolor })
     end
@@ -675,6 +662,17 @@ local hg_colors =
     dirty       = { "d",  "dirty",  "vcs_conflict" },
 }
 
+local hg = {}
+
+local function collect_hg_info()
+    local pipe = io.popen("hg status -amrd 2>&1")
+    local output = pipe:read('*all')
+    pipe:close()
+
+    local dirty = (output or "") ~= ""
+    return { dirty=dirty }
+end
+
 local function get_hg_dir(dir)
     return flexprompt.scan_upwards(dir, function (dir)
         -- Return if it's a hg (Mercurial) dir.
@@ -699,14 +697,14 @@ local function render_hg(args)
     if string.sub(branch,1,7) == "abort: " then return end
     if string.find(branch, "is not recognized") then return end
 
+    -- Collect or retrieve cached info.
+    local info, refreshing = flexprompt.prompt_info(hg, hg_dir, branch, collect_hg_info)
+
     local flow = flexprompt.get_flow()
-    local text = flexprompt.format_branch_name(branch)
+    local text = flexprompt.format_branch_name(branch, "branch", refreshing)
 
     local colors
-    local pipe = io.popen("hg status -amrd 2>&1")
-    local output = pipe:read('*all')
-    local rc = { pipe:close() }
-    if (output or "") ~= "" then
+    if info.dirty then
         text = flexprompt.append_text(text, flexprompt.get_symbol("modifycount"))
         colors = hg_colors.dirty
     else
@@ -726,7 +724,11 @@ end
 -- Clink can store multiple separate histories by setting CLINK_HISTORY_LABEL.
 
 local function render_histlabel(args)
+    local wizard = flexprompt.get_wizard_state()
     local text = os.getenv("clink_history_label")
+    if wizard and wizard.histlabel then
+        text = wizard.histlabel
+    end
     if text then
         text = text:match("^ *([^ ].*)$")
         text = text:match("^(.*[^ ]) *$")
@@ -832,47 +834,56 @@ end
 --  - color_name is a name like "green", or an sgr code like "38;5;60".
 --  - alt_color_name is optional; it is the text color in rainbow style.
 
+local mvn = {}
+
+local function collect_mvn_info()
+    local handle = io.popen('xmllint --xpath "//*[local-name()=\'project\']/*[local-name()=\'groupId\']/text()" pom.xml 2>NUL')
+    local package_group = handle:read("*a")
+    handle:close()
+    if package_group == nil or package_group == "" then
+        local parent_handle = io.popen('xmllint --xpath "//*[local-name()=\'project\']/*[local-name()=\'parent\']/*[local-name()=\'groupId\']/text()" pom.xml 2>NUL')
+        package_group = parent_handle:read("*a")
+        parent_handle:close()
+        if not package_group then package_group = "" end
+    end
+
+    handle = io.popen('xmllint --xpath "//*[local-name()=\'project\']/*[local-name()=\'artifactId\']/text()" pom.xml 2>NUL')
+    local package_artifact = handle:read("*a")
+    handle:close()
+    if not package_artifact then package_artifact = "" end
+
+    handle = io.popen('xmllint --xpath "//*[local-name()=\'project\']/*[local-name()=\'version\']/text()" pom.xml 2>NUL')
+    local package_version = handle:read("*a")
+    handle:close()
+    if package_version == nil or package_version == "" then
+        local parent_handle = io.popen('xmllint --xpath "//*[local-name()=\'project\']/*[local-name()=\'parent\']/*[local-name()=\'version\']/text()" pom.xml 2>NUL')
+        package_version = parent_handle:read("*a")
+        parent_handle:close()
+        if not package_version then package_version = "" end
+    end
+
+    return { package_group=package_group, package_artifact=package_artifact, package_version=package_version }
+end
+
 local function get_pom_xml_dir(dir)
     return flexprompt.scan_upwards(dir, function (dir)
         local pom_file = path.join(dir, "pom.xml")
         -- More efficient than opening the file.
-        if os.isfile(pom_file) then return true end
+        if os.isfile(pom_file) then return dir end
     end)
 end
 
 local function render_maven(args)
-    if get_pom_xml_dir() then
-        local handle = io.popen('xmllint --xpath "//*[local-name()=\'project\']/*[local-name()=\'groupId\']/text()" pom.xml 2>NUL')
-        local package_group = handle:read("*a")
-        handle:close()
-        if package_group == nil or package_group == "" then
-            local parent_handle = io.popen('xmllint --xpath "//*[local-name()=\'project\']/*[local-name()=\'parent\']/*[local-name()=\'groupId\']/text()" pom.xml 2>NUL')
-            package_group = parent_handle:read("*a")
-            parent_handle:close()
-            if not package_group then package_group = "" end
-        end
+    local mvn_dir = get_pom_xml_dir()
+    if not mvn_dir then return end
 
-        handle = io.popen('xmllint --xpath "//*[local-name()=\'project\']/*[local-name()=\'artifactId\']/text()" pom.xml 2>NUL')
-        local package_artifact = handle:read("*a")
-        handle:close()
-        if not package_artifact then package_artifact = "" end
+    local info = flexprompt.prompt_info(mvn, mvn_dir, nil, collect_mvn_info)
 
-        handle = io.popen('xmllint --xpath "//*[local-name()=\'project\']/*[local-name()=\'version\']/text()" pom.xml 2>NUL')
-        local package_version = handle:read("*a")
-        handle:close()
-        if package_version == nil or package_version == "" then
-            local parent_handle = io.popen('xmllint --xpath "//*[local-name()=\'project\']/*[local-name()=\'parent\']/*[local-name()=\'version\']/text()" pom.xml 2>NUL')
-            package_version = parent_handle:read("*a")
-            parent_handle:close()
-            if not package_version then package_version = "" end
-        end
+    local text = (info.package_group or "") .. ":" .. (info.package_artifact or "") .. ":" .. (info.package_version or "")
+    text = flexprompt.append_text(flexprompt.get_module_symbol(), text)
 
-        local text = package_group .. ":" .. package_artifact .. ":" .. package_version
-        text = flexprompt.append_text(flexprompt.get_module_symbol(), text)
-
-        local color, altcolor = parse_color_token(args, { "c", "color", "mod_cyan" })
-        return text, color, altcolor
-    end
+    local color, altcolor = parse_color_token(args, { "c", "color", "mod_cyan" })
+    return text, color, altcolor
 end
 
 --------------------------------------------------------------------------------
@@ -1360,3 +1371,5 @@ end
 if rl.ismodifiedline then
 flexprompt.add_module( "modmark",   render_modmark                      )
 end
+
+_flexprompt_test_process_cwd_string = process_cwd_string

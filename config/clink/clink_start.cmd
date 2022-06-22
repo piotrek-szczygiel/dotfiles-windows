@@ -37,4 +37,3 @@ doskey exit=echo Use 'q' to exit
 set LOGONSERVER=\\LOCALHOST
 
 cls
-winfetch.cmd
