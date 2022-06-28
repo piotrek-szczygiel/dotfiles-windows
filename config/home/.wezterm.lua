@@ -1,6 +1,8 @@
 local wezterm = require 'wezterm';
 
 return {
+  color_scheme = "UnderTheSea",
+
   initial_cols = 120,
   initial_rows = 30,
 
