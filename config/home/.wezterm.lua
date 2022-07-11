@@ -1,5 +1,5 @@
 local wezterm = require 'wezterm';
-local dimmer = {brightness=0.01}
+local dimmer = {brightness=0.02}
 
 return {
   color_scheme = "UnderTheSea",
