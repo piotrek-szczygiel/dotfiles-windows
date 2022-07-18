@@ -26,6 +26,17 @@ return {
     bottom = 0,
   },
 
+  launch_menu = {
+    {
+      label = "CMD",
+      args = {"cmd"},
+    },
+    {
+      label = "WSL",
+      args = {"wsl"},
+    },
+  },
+
   keys = {
     { key = "h", mods="CTRL|SHIFT|ALT",
       action=wezterm.action{ActivatePaneDirection="Left"}},
@@ -36,7 +47,17 @@ return {
     { key = "j", mods="CTRL|SHIFT|ALT",
       action=wezterm.action{ActivatePaneDirection="Down"}},
 
-    { key = "l", mods="CTRL|SHIFT",
+    { key = "|", mods="CTRL|SHIFT",
+      action=wezterm.action.SplitHorizontal{domain="CurrentPaneDomain"}},
+    { key = "_", mods="CTRL|SHIFT",
+      action=wezterm.action.SplitVertical{domain="CurrentPaneDomain"}},
+
+    { key = "|", mods="CTRL|SHIFT|ALT",
+      action=wezterm.action.SplitHorizontal{domain="CurrentPaneDomain", args={"wsl"}}},
+    { key = "_", mods="CTRL|SHIFT|ALT",
+      action=wezterm.action.SplitVertical{domain="CurrentPaneDomain", args={"wsl"}}},
+
+    { key = "l", mods="CTRL|SHIFT|ALT",
       action=wezterm.action{ClearScrollback="ScrollbackOnly"}},
   },
 
