@@ -2,10 +2,12 @@ local wezterm = require 'wezterm';
 local dimmer = {brightness=0.02}
 
 return {
-  color_scheme = "UnderTheSea",
+  -- color_scheme = "UnderTheSea",
 
   initial_cols = 120,
   initial_rows = 30,
+
+  scrollback_lines = 10000,
 
   default_cwd = "/dev",
   enable_scroll_bar = true,
