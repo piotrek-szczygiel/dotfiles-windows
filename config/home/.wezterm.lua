@@ -2,7 +2,9 @@ local wezterm = require 'wezterm';
 local dimmer = {brightness=0.02}
 
 return {
-  -- color_scheme = "UnderTheSea",
+  color_scheme = "ayu",
+  font = wezterm.font "PragmataPro Mono Liga",
+  font_size = 14,
 
   initial_cols = 120,
   initial_rows = 30,
@@ -21,12 +23,12 @@ return {
     fade_out_duration_ms = 150,
   },
 
-  window_padding = {
-    left = 0,
-    right = 0,
-    top = 0,
-    bottom = 0,
-  },
+  -- window_padding = {
+  --   left = 0,
+  --   right = 0,
+  --   top = 0,
+  --   bottom = 0,
+  -- },
 
   launch_menu = {
     {

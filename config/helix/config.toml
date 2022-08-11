@@ -1,4 +1,4 @@
-theme = "gruvbox"
+theme = "onedark"
 
 [editor.lsp]
 display-messages = true
