@@ -1,3 +1,5 @@
+set termguicolors
+
 lua require('plugins')
 
 if (has('autocmd') && !has('gui_running'))
@@ -12,7 +14,6 @@ let g:indentLine_fileTypeExclude = ['json', 'markdown']
 
 colorscheme onedark
 
-set colorcolumn=120
 set expandtab
 set hidden
 set ignorecase
@@ -21,6 +22,7 @@ set number
 set scrolloff=5
 set shiftround
 set shiftwidth=4
+set signcolumn=yes
 set smartcase
 set splitbelow
 set splitright
