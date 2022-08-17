@@ -24,16 +24,10 @@ doskey la=exa --icons --group-directories-first -la $*
 
 doskey md=mkdir ""$*"" $T cd ""$*""
 doskey sudo=gsudo --wait $*
-doskey tg=terragrunt $*
 
 doskey zz=z -c $*
 doskey zi=z -i $*
-doskey zf=z -I $*
 doskey zb=z -b $*
 
 doskey q=exit /b 0
 doskey exit=echo Use 'q' to exit
-
-set LOGONSERVER=\\LOCALHOST
-
-cls

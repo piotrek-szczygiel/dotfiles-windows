@@ -10,7 +10,7 @@
 
 [core]
 	autocrlf = input
-	editor = hx
+	editor = nvim
 	fsmonitor = true
 	longPaths = true
 	pager = delta

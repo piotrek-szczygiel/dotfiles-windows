@@ -56,14 +56,12 @@ function Start-Bootstrap {
         "coreutils",
         "delta",
         "fd",
-        "fzf",
-        "helix",
         "jq",
         "less",
         "lua",
         "make",
+	"neovim",
         "ripgrep",
-        "starship",
         "tokei",
         "winfetch"
     )
