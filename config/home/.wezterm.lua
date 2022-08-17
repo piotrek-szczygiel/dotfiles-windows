@@ -1,9 +1,8 @@
 local wezterm = require 'wezterm';
-local dimmer = {brightness=0.02}
 
 return {
   color_scheme = "ayu",
-  font = wezterm.font "PragmataPro Mono Liga",
+  font = wezterm.font "Consolas NF",
   font_size = 14,
 
   initial_cols = 120,
