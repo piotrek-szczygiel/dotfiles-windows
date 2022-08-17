@@ -60,10 +60,12 @@ function Start-Bootstrap {
         "less",
         "lua",
         "make",
-	"neovim",
+        "neovim",
+        "nodejs",
         "ripgrep",
         "tokei",
-        "winfetch"
+        "winfetch",
+        "zig"
     )
 
     Write-Host "Installing scoop packages" -ForegroundColor Cyan
@@ -92,7 +94,6 @@ function Start-Bootstrap {
     [Environment]::SetEnvironmentVariable("GIT_SSH", "C:/Windows/System32/OpenSSH/ssh.exe", "User")
     [Environment]::SetEnvironmentVariable("GIT_SSH_COMMAND", "C:/Windows/System32/OpenSSH/ssh.exe", "User")
     [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
-    [Environment]::SetEnvironmentVariable("FZF_DEFAULT_OPTS", "--height 40% --ansi", "User")
 
     Add-To-Path "$env:USERPROFILE\OneDrive\Windows\bin"
     Add-To-Path "$env:LOCALAPPDATA\clink"
@@ -102,7 +103,10 @@ function Start-Bootstrap {
 
     Write-Host "Updating python packages" -ForegroundColor Cyan
     python -m pip install --upgrade pip
-    pip install --upgrade black flake8
+    pip install --upgrade black flake8 neovim
+
+    Write-Host "Installing packer.nvim"
+    git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
 
     Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
     gsudo --wait python "$Destination\bin\link-all.py"

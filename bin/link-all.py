@@ -14,9 +14,9 @@ config = os.path.join(dotfiles, "config")
 
 links = {
     "clink": f"{localappdata}\\clink",
-    "helix": f"{appdata}\\helix",
     "home": f"{home}",
     "lsd": f"{appdata}\\lsd",
+    "nvim": f"{localappdata}\\nvim",
     "winfetch": f"{home}\\.config\\winfetch"
 }
 
