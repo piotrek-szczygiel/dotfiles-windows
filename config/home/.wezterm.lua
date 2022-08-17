@@ -2,7 +2,7 @@ local wezterm = require 'wezterm';
 
 return {
   color_scheme = "ayu",
-  font = wezterm.font "Consolas NF",
+  font = wezterm.font "MesloLGS NF",
   font_size = 14,
 
   initial_cols = 120,
@@ -21,13 +21,6 @@ return {
     fade_out_function = "EaseOut",
     fade_out_duration_ms = 150,
   },
-
-  -- window_padding = {
-  --   left = 0,
-  --   right = 0,
-  --   top = 0,
-  --   bottom = 0,
-  -- },
 
   launch_menu = {
     {
