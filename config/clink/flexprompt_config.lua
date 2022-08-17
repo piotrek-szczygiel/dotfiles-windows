@@ -1,20 +1,20 @@
 flexprompt = flexprompt or {}
 flexprompt.settings = flexprompt.settings or {}
+flexprompt.settings.use_home_tilde = true
 flexprompt.settings.use_8bit_color = true
 flexprompt.settings.powerline_font = true
 flexprompt.settings.lines = "two"
 flexprompt.settings.left_prompt = "{histlabel}{cwd}{git}"
-flexprompt.settings.heads = "round"
+flexprompt.settings.heads = "pointed"
 flexprompt.settings.right_frame = "none"
-flexprompt.settings.left_frame = "round"
+flexprompt.settings.left_frame = "square"
 flexprompt.settings.style = "classic"
-flexprompt.settings.symbols = { prompt = "❯" }
-flexprompt.settings.right_prompt = "{exit}{duration}{vpn}{user}{time}"
+flexprompt.settings.right_prompt = "{exit}{duration}{user}{time}"
 flexprompt.settings.flow = "concise"
 flexprompt.settings.use_icons = true
 flexprompt.settings.spacing = "sparse"
 flexprompt.settings.connection = "disconnected"
 flexprompt.settings.frame_color = "dark"
-flexprompt.settings.separators = "dot"
+flexprompt.settings.separators = "vertical"
 flexprompt.settings.tails = "round"
 flexprompt.settings.charset = "unicode"
