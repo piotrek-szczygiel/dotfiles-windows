@@ -20,7 +20,6 @@ function Start-Bootstrap {
         return
     }
 
-    winget install --exact --id gerardog.gsudo --silent
     gsudo cache on
 
     $WingetPackages = @(
