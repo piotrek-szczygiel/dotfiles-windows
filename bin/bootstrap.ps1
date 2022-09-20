@@ -29,7 +29,7 @@ function Start-Bootstrap {
         @("Git.Git",                     "--interactive"),
         @("Microsoft.PowerToys",         "--silent"),
         @("Microsoft.VisualStudioCode",  "--interactive"),
-        @("Python.Python.3",             "--silent"),
+        @("Python.Python.3.10",          "--silent"),
         @("voidtools.Everything",        "--silent"),
         @("wez.wezterm",                 "--silent")
     )
