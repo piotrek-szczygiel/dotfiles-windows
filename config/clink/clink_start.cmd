@@ -17,10 +17,10 @@ doskey gp=git push $*
 doskey gs=git status $*
 doskey gus=git restore --staged $*
 
-doskey l=exa --icons --group-directories-first $*
-doskey ls=exa --icons --group-directories-first $*
-doskey ll=exa --icons --group-directories-first -l $*
-doskey la=exa --icons --group-directories-first -la $*
+doskey l=exa  --git --icons --group-directories-first $*
+doskey ls=exa --git --icons --group-directories-first $*
+doskey ll=exa --git --icons --group-directories-first -l $*
+doskey la=exa --git --icons --group-directories-first -la $*
 
 doskey md=mkdir ""$*"" $T cd ""$*""
 doskey sudo=gsudo --wait $*

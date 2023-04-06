@@ -26,14 +26,12 @@ function Start-Bootstrap {
 
     $WingetPackages = @(
         @("7zip.7zip",                   "--silent"),
-        @("Amazon.Corretto.17",          "--silent"),
         @("chrisant996.Clink",           "--silent"),
         @("Git.Git",                     "--interactive"),
         @("Microsoft.PowerToys",         "--silent"),
         @("Microsoft.VisualStudioCode",  "--interactive"),
-        @("Python.Python.3.10",          "--silent"),
+        @("Python.Python.3.12",          "--silent"),
         @("voidtools.Everything",        "--silent"),
-        @("wez.wezterm",                 "--silent")
     )
 
     Write-Host "Installing applications using winget" -ForegroundColor Cyan
@@ -57,7 +55,6 @@ function Start-Bootstrap {
         "coreutils",
         "delta",
         "fd",
-        "jq",
         "less",
         "lua",
         "make",
@@ -65,8 +62,6 @@ function Start-Bootstrap {
         "nodejs",
         "ripgrep",
         "tokei",
-        "winfetch",
-        "zig"
     )
 
     Write-Host "Installing scoop packages" -ForegroundColor Cyan
@@ -105,9 +100,6 @@ function Start-Bootstrap {
     Write-Host "Updating python packages" -ForegroundColor Cyan
     python -m pip install --upgrade pip
     pip install --upgrade black flake8 neovim
-
-    Write-Host "Installing packer.nvim"
-    git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
 
     Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
     gsudo --wait python "$Destination\bin\link-all.py"

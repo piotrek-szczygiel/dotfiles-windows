@@ -16,8 +16,6 @@ links = {
     "clink": f"{localappdata}\\clink",
     "home": f"{home}",
     "lsd": f"{appdata}\\lsd",
-    "nvim": f"{localappdata}\\nvim",
-    "winfetch": f"{home}\\.config\\winfetch"
 }
 
 for program in os.listdir(config):
