@@ -29,5 +29,8 @@ doskey zz=z -c $*
 doskey zi=z -i $*
 doskey zb=z -b $*
 
+doskey pn=pnpm $*
+doskey px=pnpm exec $*
+
 doskey q=exit /b 0
 doskey exit=echo Use 'q' to exit

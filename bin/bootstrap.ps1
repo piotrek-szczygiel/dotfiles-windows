@@ -31,7 +31,7 @@ function Start-Bootstrap {
         @("Microsoft.PowerToys",         "--silent"),
         @("Microsoft.VisualStudioCode",  "--interactive"),
         @("Python.Python.3.12",          "--silent"),
-        @("voidtools.Everything",        "--silent"),
+        @("voidtools.Everything",        "--silent")
     )
 
     Write-Host "Installing applications using winget" -ForegroundColor Cyan
@@ -60,8 +60,9 @@ function Start-Bootstrap {
         "make",
         "neovim",
         "nodejs",
+        "pnpm",
         "ripgrep",
-        "tokei",
+        "tokei"
     )
 
     Write-Host "Installing scoop packages" -ForegroundColor Cyan
