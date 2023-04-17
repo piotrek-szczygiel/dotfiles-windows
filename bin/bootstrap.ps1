@@ -100,7 +100,7 @@ function Start-Bootstrap {
 
     Write-Host "Updating python packages" -ForegroundColor Cyan
     python -m pip install --upgrade pip
-    pip install --upgrade black flake8 neovim
+    pip install --upgrade black flake8
 
     Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
     gsudo --wait python "$Destination\bin\link-all.py"
