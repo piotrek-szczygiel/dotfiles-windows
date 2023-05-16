@@ -22,6 +22,8 @@ doskey ls=exa --git --icons --group-directories-first $*
 doskey ll=exa --git --icons --group-directories-first -l $*
 doskey la=exa --git --icons --group-directories-first -la $*
 
+doskey tr=erd -IHL1 --dirs-first $*
+
 doskey md=mkdir ""$*"" $T cd ""$*""
 doskey sudo=gsudo --wait $*
 

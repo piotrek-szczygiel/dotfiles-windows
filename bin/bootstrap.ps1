@@ -62,7 +62,8 @@ function Start-Bootstrap {
         "nodejs",
         "pnpm",
         "ripgrep",
-        "tokei"
+        "tokei",
+        "https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json"
     )
 
     Write-Host "Installing scoop packages" -ForegroundColor Cyan
