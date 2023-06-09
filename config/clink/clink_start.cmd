@@ -22,7 +22,7 @@ doskey ls=exa --git --icons --group-directories-first $*
 doskey ll=exa --git --icons --group-directories-first -l $*
 doskey la=exa --git --icons --group-directories-first -la $*
 
-doskey tr=erd -IHL1 --dirs-first $*
+doskey tr=erd -IHL1 --dirs-first --no-git --hidden $*
 
 doskey md=mkdir ""$*"" $T cd ""$*""
 doskey sudo=gsudo --wait $*
@@ -36,3 +36,5 @@ doskey px=pnpm exec $*
 
 doskey q=exit /b 0
 doskey exit=echo Use 'q' to exit
+
+doskey rockstar=pushd C:\dev\rockstar $T docker compose -f compose-dev.yaml up -d $T pnpm dev $T popd

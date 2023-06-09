@@ -60,7 +60,6 @@ function Start-Bootstrap {
         "make",
         "neovim",
         "nodejs",
-        "pnpm",
         "ripgrep",
         "tokei",
         "https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json"
@@ -71,6 +70,9 @@ function Start-Bootstrap {
         Write-Host "Installing scoop package $Package..." -ForegroundColor Yellow
         scoop install $Package
     }
+
+    Write-Host "Installing pnpm" -ForegroundColor Cyan
+    Invoke-WebRequest https://get.pnpm.io/install.ps1 -useb | Invoke-Expression
 
     Reset-Env Path
 
