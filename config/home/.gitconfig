@@ -1,6 +1,7 @@
 [user]
 	email = szczygiel.p@gmail.com
 	name = Piotr Szczygieł
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDR5PjSdM3RBmg6MlNazABdkKnm0c5DK6T6tebaASZsd
 
 [apply]
 	whitespace = warn
@@ -26,6 +27,9 @@
 [diff]
 	colorMoved = default
 
+[commit]
+	gpgsign = true
+
 [push]
 	default = simple
 	autoSetupRemote = true
@@ -35,5 +39,8 @@
 	pushInsteadOf = "github:"
 	pushInsteadOf = "git://github.com/"
 
-[includeIf "gitdir/i:C:/work/"]
-	path = .gitconfig-work
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = "C:/Users/szczy/AppData/Local/1Password/app/8/op-ssh-sign.exe"
