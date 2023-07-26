@@ -43,4 +43,4 @@
 	format = ssh
 
 [gpg "ssh"]
-	program = "C:/Users/szczy/AppData/Local/1Password/app/8/op-ssh-sign.exe"
+	program = C:/Users/szczy/AppData/Local/1Password/app/8/op-ssh-sign.exe
