@@ -55,7 +55,7 @@ function Start-Bootstrap {
         "coreutils",
         "delta",
         "fd",
-	"gh",
+        "gh",
         "less",
         "lua",
         "make",
@@ -63,6 +63,7 @@ function Start-Bootstrap {
         "nodejs",
         "ripgrep",
         "tokei",
+        "zoxide",
         "https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json"
     )
 
