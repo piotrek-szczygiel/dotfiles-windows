@@ -32,3 +32,7 @@ doskey px=pnpm exec $*
 
 doskey q=exit /b 0
 doskey exit=echo Use 'q' to exit
+
+REM not needed, added only so the "z" and "zi" command are not highlighted red, as in non-existent command
+doskey z=cd $*
+doskey zi=cd $*
