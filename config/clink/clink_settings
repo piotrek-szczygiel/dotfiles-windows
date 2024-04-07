@@ -2,10 +2,19 @@
 # type: boolean
 autosuggest.enable = True
 
+# name: Show usage hint for automatic suggestions
+# type: boolean
+autosuggest.hint = False
+
 # name: Selects default key bindings
 # type: enum
 # options: bash,windows
 clink.default_bindings = windows
+
+# name: Controls what startup logo to show
+# type: enum
+# options: none,full,short
+clink.logo = none
 
 # name: Pressing Ctrl-D exits session
 # type: boolean
@@ -124,9 +133,13 @@ match.expand_envvars = True
 # type: boolean
 match.substring = True
 
+# name: Controls spacing before prompt
+# type: enum
+# options: normal,compact,sparse
+prompt.spacing = normal
+
 # name: Controls when past prompts are collapsed
 # type: enum
 # options: off,always,same_dir
 prompt.transient = off
 
-clink.logo = none
