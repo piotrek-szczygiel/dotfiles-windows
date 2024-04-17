@@ -55,6 +55,7 @@ function Start-Bootstrap {
         "coreutils",
         "delta",
         "fd",
+        "fnm",
         "gh",
         "less",
         "lua",
