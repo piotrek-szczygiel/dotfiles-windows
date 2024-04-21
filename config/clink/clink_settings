@@ -20,6 +20,8 @@ clink.logo = none
 # type: boolean
 cmd.ctrld_exits = False
 
+cmd.auto_answer = answer_yes
+
 # name: Argument color
 # type: color
 color.arg = bold
