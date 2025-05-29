@@ -22,7 +22,6 @@ function Start-Bootstrap {
 
     $WingetPackages = @(
         @("7zip.7zip",                   "--silent"),
-        @("chrisant996.Clink",           "--silent"),
         @("Git.Git",                     "--interactive"),
         @("Microsoft.VisualStudioCode",  "--interactive"),
         @("Python.Python.3.13",          "--silent")
@@ -47,6 +46,8 @@ function Start-Bootstrap {
     $ScoopPackages = @(
         "bat",
         "bun",
+        "clink",
+        "clink-flex-prompt",
         "coreutils",
         "delta",
         "eza",
