@@ -20,24 +20,18 @@ function Start-Bootstrap {
         return
     }
 
-    winget install --exact --id gerardog.gsudo --silent
-    Reset-Env Path
-    gsudo cache on
-
     $WingetPackages = @(
         @("7zip.7zip",                   "--silent"),
         @("chrisant996.Clink",           "--silent"),
         @("Git.Git",                     "--interactive"),
-        @("Microsoft.PowerToys",         "--silent"),
         @("Microsoft.VisualStudioCode",  "--interactive"),
-        @("Python.Python.3.12",          "--silent"),
-        @("voidtools.Everything",        "--silent")
+        @("Python.Python.3.13",          "--silent")
     )
 
     Write-Host "Installing applications using winget" -ForegroundColor Cyan
     foreach ($Package in $WingetPackages) {
         Write-Host "Installing winget package $($Package[0])..." -ForegroundColor Yellow
-        gsudo --wait winget install --exact --id $Package[0] $Package[1]
+        winget install --exact --id $Package[0] $Package[1]
     }
 
     if (-Not (Get-Command scoop 2> $null)) {
@@ -52,16 +46,15 @@ function Start-Bootstrap {
 
     $ScoopPackages = @(
         "bat",
+        "bun",
         "coreutils",
         "delta",
         "fd",
-        "fnm",
         "gh",
         "less",
         "lua",
         "make",
         "neovim",
-        "nodejs",
         "ripgrep",
         "tokei",
         "zoxide"
@@ -72,9 +65,6 @@ function Start-Bootstrap {
         Write-Host "Installing scoop package $Package..." -ForegroundColor Yellow
         scoop install $Package
     }
-
-    Write-Host "Installing pnpm" -ForegroundColor Cyan
-    Invoke-WebRequest https://get.pnpm.io/install.ps1 -useb | Invoke-Expression
 
     Reset-Env Path
 
@@ -93,8 +83,6 @@ function Start-Bootstrap {
     Write-Host "Setting environment variables" -ForegroundColor Cyan
     [Environment]::SetEnvironmentVariable("HOME", "$env:USERPROFILE", "User")
     [Environment]::SetEnvironmentVariable("dotfiles", "$Destination", "User")
-    [Environment]::SetEnvironmentVariable("GIT_SSH", "C:/Windows/System32/OpenSSH/ssh.exe", "User")
-    [Environment]::SetEnvironmentVariable("GIT_SSH_COMMAND", "C:/Windows/System32/OpenSSH/ssh.exe", "User")
     [Environment]::SetEnvironmentVariable("LC_ALL", "C.UTF-8", "User")
 
     Add-To-Path "$env:USERPROFILE\OneDrive\Windows\bin"
@@ -103,18 +91,8 @@ function Start-Bootstrap {
     Reset-Env Path
     Reset-Env dotfiles
 
-    Write-Host "Updating python packages" -ForegroundColor Cyan
-    python -m pip install --upgrade pip
-    pip install --upgrade black flake8
-
     Write-Host "Launching linking script with administrator rights" -ForegroundColor Cyan
-    gsudo --wait python "$Destination\bin\link-all.py"
-
-    Write-Host "Enabling SSH Agent" -ForegroundColor Cyan
-    gsudo --wait Set-Service -StartupType Automatic ssh-agent
-    gsudo --wait Start-Service ssh-agent
-
-    gsudo cache off
+    sudo python "$Destination\bin\link-all.py"
 
     Write-Host "Enabling clink autorun" -ForegroundColor Cyan
     & "C:\Program Files (x86)\clink\clink_x64.exe" autorun install
