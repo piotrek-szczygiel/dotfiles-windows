@@ -21,10 +21,7 @@ function Start-Bootstrap {
     }
 
     $WingetPackages = @(
-        @("7zip.7zip",                   "--silent"),
-        @("Git.Git",                     "--interactive"),
-        @("Microsoft.VisualStudioCode",  "--interactive"),
-        @("Python.Python.3.13",          "--silent")
+        @("Microsoft.VisualStudioCode",  "--interactive")
     )
 
     Write-Host "Installing applications using winget" -ForegroundColor Cyan
@@ -44,6 +41,7 @@ function Start-Bootstrap {
     }
 
     $ScoopPackages = @(
+        "7zip",
         "bat",
         "bun",
         "clink",
@@ -53,10 +51,12 @@ function Start-Bootstrap {
         "eza",
         "fd",
         "gh",
+        "git",
         "less",
         "lua",
         "make",
         "neovim",
+        "python",
         "ripgrep",
         "tokei",
         "zoxide"
