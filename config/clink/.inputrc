@@ -1,6 +1,0 @@
-$if clink
-
-C-f: forward-char
-C-z: "zi\C-M"
-
-$endif

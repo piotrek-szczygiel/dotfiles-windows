@@ -49,6 +49,7 @@ function Start-Bootstrap {
         "bun",
         "coreutils",
         "delta",
+        "eza",
         "fd",
         "gh",
         "less",
