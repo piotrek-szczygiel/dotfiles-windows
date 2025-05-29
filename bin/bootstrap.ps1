@@ -97,7 +97,7 @@ function Start-Bootstrap {
     sudo python "$Destination\bin\link-all.py"
 
     Write-Host "Enabling clink autorun" -ForegroundColor Cyan
-    & "C:\Program Files (x86)\clink\clink_x64.exe" autorun install
+    clink autorun install
 
     Write-Host "Configuration bootstraping finished!" -ForegroundColor Green
 }
