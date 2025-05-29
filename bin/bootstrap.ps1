@@ -21,7 +21,8 @@ function Start-Bootstrap {
     }
 
     $WingetPackages = @(
-        @("Microsoft.VisualStudioCode",  "--interactive")
+        @("Microsoft.PowerToys",        "--interactive"),
+        @("Microsoft.VisualStudioCode", "--interactive")
     )
 
     Write-Host "Installing applications using winget" -ForegroundColor Cyan
