@@ -10,26 +10,83 @@ $packages = @(
     'sharkdp.fd'
     'eza-community.eza'
     'AgileBits.1Password'
+    'Google.Chrome'
 )
 foreach ($id in $packages) {
     winget install --id $id --exact --silent --accept-package-agreements --accept-source-agreements
 }
 $env:Path = [Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [Environment]::GetEnvironmentVariable('Path', 'User')
 
-# Long paths and Developer Mode (symlinks without admin).
-$fileSystem = 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem'
-$appModel = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock'
-$longPaths = (Get-ItemProperty $fileSystem).LongPathsEnabled
-$devMode = (Get-ItemProperty $appModel -ErrorAction SilentlyContinue).AllowDevelopmentWithoutDevLicense
-if ($longPaths -ne 1 -or $devMode -ne 1) {
-    $elevated = @"
-Set-ItemProperty '$fileSystem' LongPathsEnabled 1 -Type DWord
-if (-not (Test-Path '$appModel')) { New-Item '$appModel' | Out-Null }
-Set-ItemProperty '$appModel' AllowDevelopmentWithoutDevLicense 1 -Type DWord
-"@
+function Set-Registry($Path, $Name, $Value) {
+    if (-not (Test-Path $Path)) { New-Item $Path -Force | Out-Null }
+    Set-ItemProperty $Path $Name $Value
+}
+
+function Get-Pending($Entries) {
+    $Entries | Where-Object { (Get-ItemProperty $_[0] -ErrorAction SilentlyContinue).($_[1]) -ne $_[2] }
+}
+
+$machine = @(
+    @('HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem', 'LongPathsEnabled', 1),
+    # Developer Mode: symlinks without admin.
+    @('HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock', 'AllowDevelopmentWithoutDevLicense', 1),
+    # Widgets.
+    @('HKLM:\SOFTWARE\Policies\Microsoft\Dsh', 'AllowNewsAndInterests', 0),
+    # Recall.
+    @('HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsAI', 'DisableAIDataAnalysis', 1),
+    # Bing in Start search.
+    @('HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer', 'DisableSearchBoxSuggestions', 1)
+)
+$pending = @(Get-Pending $machine)
+if ($pending) {
+    $elevated = "function Set-Registry {${function:Set-Registry}}`n" + (($pending | ForEach-Object { "Set-Registry '$($_[0])' '$($_[1])' $($_[2])" }) -join "`n")
     $encoded = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($elevated))
     Start-Process pwsh -Verb RunAs -Wait -ArgumentList '-NoProfile', '-EncodedCommand', $encoded
 }
+
+$advanced = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
+$content = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager'
+$theme = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize'
+$user = @(
+    @($advanced, 'HideFileExt', 0),
+    @($advanced, 'Hidden', 1),
+    @($advanced, 'LaunchTo', 1),
+    # Classic context menu.
+    @('HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32', '(default)', ''),
+
+    @($advanced, 'Start_TrackDocs', 0),
+    @($advanced, 'Start_IrisRecommendations', 0),
+    @($content, 'SilentInstalledAppsEnabled', 0),
+    @($content, 'SystemPaneSuggestionsEnabled', 0),
+    @($content, 'SubscribedContent-338387Enabled', 0),
+    @($content, 'SubscribedContent-338388Enabled', 0),
+    @($content, 'SubscribedContent-338389Enabled', 0),
+    @($content, 'SubscribedContent-338393Enabled', 0),
+    @($content, 'SubscribedContent-353694Enabled', 0),
+    @($content, 'SubscribedContent-353696Enabled', 0),
+    @('HKCU:\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement', 'ScoobeSystemSettingEnabled', 0),
+    @('HKCU:\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo', 'Enabled', 0),
+
+    @($advanced, 'TaskbarAl', 0),
+    @($advanced, 'ShowTaskViewButton', 0),
+    @('HKCU:\Software\Microsoft\Windows\CurrentVersion\Search', 'SearchboxTaskbarMode', 0),
+    @("$advanced\TaskbarDeveloperSettings", 'TaskbarEndTask', 1),
+
+    @($theme, 'AppsUseLightTheme', 0),
+    @($theme, 'SystemUsesLightTheme', 0),
+    @('HKCU:\Control Panel\Mouse', 'MouseSpeed', '0'),
+    @('HKCU:\Control Panel\Mouse', 'MouseThreshold1', '0'),
+    @('HKCU:\Control Panel\Mouse', 'MouseThreshold2', '0'),
+    @('HKCU:\Control Panel\Keyboard', 'KeyboardSpeed', '31'),
+    @('HKCU:\Control Panel\Keyboard', 'KeyboardDelay', '0'),
+    # Sticky Keys off, including the Shift x5 shortcut.
+    @('HKCU:\Control Panel\Accessibility\StickyKeys', 'Flags', '506')
+)
+$pending = @(Get-Pending $user)
+foreach ($entry in $pending) { Set-Registry @entry }
+if ($pending) { Stop-Process -Name explorer -Force }
+
+Get-AppxPackage Microsoft.Copilot | Remove-AppxPackage
 
 [Environment]::SetEnvironmentVariable('POWERSHELL_UPDATECHECK', 'Off', 'User')
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'User')

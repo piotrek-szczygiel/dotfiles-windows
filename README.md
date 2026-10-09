@@ -22,7 +22,7 @@ winget install Git.Git Microsoft.PowerShell
 1. Add `~\.ssh\id_ed25519.pub` to https://github.com/settings/keys and https://git.szczygiel.dev/user/settings/keys.
 2. 1Password: sign in, then Settings → Developer → Use the SSH agent.
 3. Create a Dev Drive as `D:` (Settings → System → Storage → Disks & volumes).
-4. Restart Windows Terminal and Claude Code.
+4. Sign out and back in.
 
 ## Notes
 
