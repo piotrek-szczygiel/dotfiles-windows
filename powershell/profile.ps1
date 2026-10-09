@@ -23,7 +23,6 @@ function gs { git status @args }
 
 function q { exit }
 
-# Read .git/HEAD directly; spawning git would slow every prompt.
 function Get-GitBranch {
     $dir = $PWD.ProviderPath
     while ($dir) {
@@ -37,7 +36,6 @@ function Get-GitBranch {
     }
 }
 
-$script:lastHistoryId = 0
 function prompt {
     $ok = $?
     $path = $PWD.ProviderPath
@@ -63,8 +61,7 @@ function prompt {
     "$out $arrow$([char]0x276F)$($PSStyle.Reset) "
 }
 
-# Must come after prompt, which zoxide wraps. Cached to avoid spawning zoxide
-# on every start; delete the file after upgrading zoxide.
+# After prompt, which zoxide wraps. Delete the cache after upgrading zoxide.
 $zoxideInit = "$env:LOCALAPPDATA\zoxide\init.ps1"
 if (-not (Test-Path $zoxideInit)) {
     New-Item -ItemType Directory -Force (Split-Path $zoxideInit) | Out-Null

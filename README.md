@@ -2,14 +2,14 @@
 
 ## Install
 
-Install Claude Code and ask it to set up this repo (`install.ps1` adds it to PATH):
+Install Claude Code and ask it to set up this repo:
 
 ```powershell
 irm https://claude.ai/install.ps1 | iex
 ~\.local\bin\claude.exe
 ```
 
-Setup (git and pwsh are not on PATH until a new terminal):
+Setup (full paths, PATH is stale until a new terminal):
 
 ```powershell
 winget install Git.Git Microsoft.PowerShell
