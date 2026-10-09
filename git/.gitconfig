@@ -1,0 +1,33 @@
+[user]
+    email = szczygiel.p@gmail.com
+    name = Piotr Szczygieł
+
+[core]
+    autocrlf = input
+    sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+    longpaths = true
+    symlinks = true
+
+[pull]
+    rebase = false
+
+[fetch]
+    prune = true
+
+[diff]
+    algorithm = histogram
+
+[init]
+    defaultBranch = main
+
+[push]
+    autoSetupRemote = true
+
+[url "git@github.com:"]
+    insteadOf = gh:
+
+[url "git@git.szczygiel.dev:"]
+    insteadOf = fj:
+
+[alias]
+    main = !git checkout main 2>/dev/null || git checkout master

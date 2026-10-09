@@ -1,0 +1,9 @@
+# Forgejo SSH runs on a non-default port.
+Host git.szczygiel.dev
+    Port 22222
+
+# Git hosting: local per-machine key.
+Host github.com git.szczygiel.dev
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+    IdentityAgent none
