@@ -36,6 +36,12 @@ Set-ItemProperty '$appModel' AllowDevelopmentWithoutDevLicense 1 -Type DWord
 [Environment]::SetEnvironmentVariable('POWERSHELL_UPDATECHECK', 'Off', 'User')
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'User')
 
+# Claude Code installs to ~\.local\bin but does not add it to PATH.
+$userPath = [Environment]::GetEnvironmentVariable('Path', 'User') -split ';' | Where-Object { $_ }
+if ("$HOME\.local\bin" -notin $userPath) {
+    [Environment]::SetEnvironmentVariable('Path', (@($userPath) + "$HOME\.local\bin" -join ';'), 'User')
+}
+
 # Maple Mono NF (latest release), installed per user.
 $fonts = "$env:LOCALAPPDATA\Microsoft\Windows\Fonts"
 if (-not (Test-Path "$fonts\MapleMono-NF-Regular.ttf")) {
