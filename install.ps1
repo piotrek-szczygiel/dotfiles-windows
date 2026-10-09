@@ -126,6 +126,7 @@ $links = [ordered]@{
     'git\.gitconfig'         = "$HOME\.gitconfig"
     'ssh\config'             = "$HOME\.ssh\config"
     'claude\settings.json'   = "$HOME\.claude\settings.json"
+    'codex\config.toml'      = "$HOME\.codex\config.toml"
     'powershell\profile.ps1' = "$([Environment]::GetFolderPath('MyDocuments'))\PowerShell\Microsoft.PowerShell_profile.ps1"
 }
 foreach ($source in $links.Keys) {

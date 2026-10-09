@@ -9,6 +9,12 @@ irm https://claude.ai/install.ps1 | iex
 ~\.local\bin\claude.exe
 ```
 
+Codex:
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
+```
+
 Setup (full paths, PATH is stale until a new terminal):
 
 ```powershell
@@ -21,8 +27,9 @@ winget install Git.Git Microsoft.PowerShell
 
 1. Add `~\.ssh\id_ed25519.pub` to https://github.com/settings/keys and https://git.szczygiel.dev/user/settings/keys.
 2. 1Password: sign in, then Settings → Developer → Use the SSH agent.
-3. Create a Dev Drive as `D:` (Settings → System → Storage → Disks & volumes).
-4. Sign out and back in.
+3. Sign in to Claude Code and Codex.
+4. Create a Dev Drive as `D:` (Settings → System → Storage → Disks & volumes).
+5. Sign out and back in.
 
 ## Notes
 
